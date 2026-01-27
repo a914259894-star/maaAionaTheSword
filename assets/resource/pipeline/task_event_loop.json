@@ -1,0 +1,29 @@
+{
+    "Task_Event_Loop": {
+        "next": "Module_Enter"
+    },
+    "Module_Enter": {
+        "next": [
+            "Action_Click_Challenge",
+            "Action_Click_CreateRoom"
+        ]
+    },
+    "Module_Support": {
+        "next": [
+            "Action_Select_Element",
+            "Action_Case_Found_Target",
+            "Action_Case_Not_Found",
+            "Action_Confirm_Team"
+        ]
+    },
+    "Module_Battle": {
+        "next": "Loop_Battle_Ingame"
+    },
+    "Module_Settlement": {
+        "next": [
+            "Action_Wait_Rewards",
+            "Action_Click_Skip_2",
+            "Action_Click_Confirm_Exit"
+        ]
+    }
+}

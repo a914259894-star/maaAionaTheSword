@@ -1,0 +1,26 @@
+{
+    "Action_Click_Challenge": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            570,
+            750,
+            50,
+            50
+        ],
+        "post_delay": 1500,
+        "next": "Action_Click_CreateRoom"
+    },
+    "Action_Click_CreateRoom": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            440,
+            1040,
+            140,
+            30
+        ],
+        "post_delay": 4000,
+        "next": "Module_Support"
+    }
+}
