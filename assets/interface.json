@@ -2,11 +2,11 @@
     "interface_version": 2,
     "name": "maaAionaTheSword",
     "description": "风之痕迹助手",
-    "contact": "QQ群: 123456789",
+    "contact": "QQ群: 902646825",
     "license": "MIT",
     "welcome": "欢迎使用!",
-    "github": "https://github.com/MaaXYZ/MaaPracticeBoilerplate",
-    "version": "1.0.0",
+    "github": "https://github.com/a914259894-star/maaAionaTheSword",
+    "version": "0.0.1",
     "controller": [
         {
             "name": "安卓端",
@@ -24,7 +24,7 @@
     ],
     "task": [
         {
-            "name": "终末使徒",
+            "name": "终末使徒（快速）",
             "entry": "Task_Event_Loop",
             "option": [
                 "助战配置"
