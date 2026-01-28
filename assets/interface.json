@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v0.0.2",
+    "version": "v0.0.4",
     "controller": [
         {
             "name": "安卓端",
@@ -39,6 +39,16 @@
                 {
                     "name": "古战场",
                     "pipeline_override": {
+                        "Check_State_Lobby": {
+                            "expected": "挑战",
+                            "roi": [
+                                560,
+                                785,
+                                70,
+                                45
+                            ],
+                            "next": "Action_Click_Challenge"
+                        },
                         "Action_Click_Challenge": {
                             "target": [
                                 570,
@@ -46,14 +56,24 @@
                                 50,
                                 50
                             ]
-                        },
+                        }
+                    }
+                },
+                {
+                    "name": "常驻副本",
+                    "pipeline_override": {
                         "Check_State_Lobby": {
+                            "expected": "战斗列表",
                             "roi": [
-                                560,
-                                785,
-                                70,
-                                45
-                            ]
+                                10,
+                                0,
+                                180,
+                                65
+                            ],
+                            "next": "Action_Click_Auto_Start"
+                        },
+                        "Check_State_Support": {
+                            "next": "Loop_Stable_Monitor"
                         }
                     }
                 }

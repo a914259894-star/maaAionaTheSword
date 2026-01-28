@@ -1,0 +1,123 @@
+{
+    "Module_Refill": {
+        "next": "Action_Refill_Click_Use_Entry"
+    },
+    "Action_Refill_Click_Use_Entry": {
+        "recognition": "OCR",
+        "expected": "使用",
+        "roi": [
+            505,
+            675,
+            100,
+            35
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": "Action_Refill_Drag_Slider"
+    },
+    "Action_Refill_Drag_Slider": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            530,
+            705,
+            16,
+            16
+        ],
+        "post_delay": 500,
+        "next": "Action_Refill_Click_Minus"
+    },
+    "Action_Refill_Click_Minus": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            125,
+            710,
+            20,
+            15
+        ],
+        "post_delay": 500,
+        "next": [
+            "Action_Refill_Check_Zero",
+            "Action_Refill_Confirm_Use"
+        ]
+    },
+    "Action_Refill_Check_Zero": {
+        "recognition": "ColorMatch",
+        "roi": [
+            224,
+            713,
+            17,
+            5
+        ],
+        "target_color": [
+            46,
+            46,
+            46
+        ],
+        "threshold": [
+            5,
+            5,
+            5
+        ],
+        "action": "Click",
+        "target": [
+            570,
+            710,
+            20,
+            15
+        ],
+        "post_delay": 500,
+        "next": "Action_Refill_Confirm_Use"
+    },
+    "Action_Refill_Confirm_Use": {
+        "recognition": "OCR",
+        "expected": "使用",
+        "roi": [
+            485,
+            805,
+            75,
+            35
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": "Action_Refill_Click_Back_1"
+    },
+    "Action_Refill_Click_Back_1": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            315,
+            1195,
+            100,
+            30
+        ],
+        "post_delay": 1500,
+        "next": "Action_Refill_Click_Close"
+    },
+    "Action_Refill_Click_Close": {
+        "recognition": "OCR",
+        "expected": "关闭",
+        "roi": [
+            150,
+            805,
+            90,
+            35
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": "Action_Refill_Click_Arrow"
+    },
+    "Action_Refill_Click_Arrow": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            49,
+            1188,
+            71,
+            48
+        ],
+        "post_delay": 2000,
+        "next": "Loop_Stable_Monitor"
+    }
+}

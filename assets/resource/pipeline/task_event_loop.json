@@ -6,13 +6,27 @@
     },
     "Loop_Stable_Monitor": {
         "next": [
+            "Check_State_Refill",
             "Check_State_Settlement",
+            "Check_State_Daily_Stop",
             "Check_State_Battle",
             "Check_State_Support",
             "Check_State_Room",
             "Check_State_Lobby",
             "Action_Wait_Retry"
         ]
+    },
+    "Check_State_Refill": {
+        "recognition": "OCR",
+        "expected": "补充精力",
+        "roi": [
+            280,
+            150,
+            160,
+            55
+        ],
+        "action": "DoNothing",
+        "next": "Module_Refill"
     },
     "Check_State_Settlement": {
         "recognition": "OCR",
@@ -25,6 +39,18 @@
         ],
         "action": "DoNothing",
         "next": "Action_Wait_Rewards"
+    },
+    "Check_State_Daily_Stop": {
+        "recognition": "OCR",
+        "expected": "停止",
+        "roi": [
+            300,
+            1170,
+            125,
+            80
+        ],
+        "action": "DoNothing",
+        "next": "Action_Check_Menu_And_Click"
     },
     "Check_State_Battle": {
         "recognition": "OCR",
