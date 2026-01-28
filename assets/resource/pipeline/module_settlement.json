@@ -1,4 +1,7 @@
 {
+    "Module_Settlement": {
+        "next": "Action_Wait_Rewards"
+    },
     "Action_Wait_Rewards": {
         "recognition": "DirectHit",
         "action": "Click",

@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "0.0.1",
+    "version": "v0.0.2",
     "controller": [
         {
             "name": "安卓端",
@@ -24,16 +24,43 @@
     ],
     "task": [
         {
-            "name": "终末使徒（快速）",
-            "entry": "Task_Event_Loop",
+            "name": "活动副本",
+            "entry": "Loop_Stable_Monitor",
             "option": [
+                "选择副本",
                 "助战配置"
             ]
         }
     ],
     "option": {
+        "选择副本": {
+            "name": "1. 选择副本",
+            "cases": [
+                {
+                    "name": "古战场",
+                    "pipeline_override": {
+                        "Action_Click_Challenge": {
+                            "target": [
+                                570,
+                                750,
+                                50,
+                                50
+                            ]
+                        },
+                        "Check_State_Lobby": {
+                            "roi": [
+                                560,
+                                785,
+                                70,
+                                45
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
         "助战配置": {
-            "name": "助战配置",
+            "name": "2. 助战配置",
             "cases": [
                 {
                     "name": "火老王",

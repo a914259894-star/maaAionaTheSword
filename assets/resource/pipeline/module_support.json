@@ -1,4 +1,14 @@
 {
+    "Module_Support": {
+        "next": [
+            "Action_Select_Element",
+            "Action_Case_Found_Target",
+            "Action_Case_Not_Found",
+            "Action_Confirm_Team",
+            "Action_Start_Battle",
+            "Action_Confirm_Start"
+        ]
+    },
     "Action_Select_Element": {
         "recognition": "DirectHit",
         "action": "Click",

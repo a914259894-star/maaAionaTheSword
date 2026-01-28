@@ -1,4 +1,7 @@
 {
+    "Module_Battle": {
+        "next": "Loop_Battle_Ingame"
+    },
     "Loop_Battle_Ingame": {
         "next": [
             "Action_Check_Battle_End",
@@ -19,22 +22,13 @@
         "next": "Action_Wait_Rewards"
     },
     "Action_Battle_Skip_Turn": {
-        "recognition": "ColorMatch",
+        "recognition": "OCR",
+        "expected": "跳过",
         "roi": [
-            275,
-            1100,
-            190,
-            25
-        ],
-        "lower": [
-            16,
-            46,
-            69
-        ],
-        "upper": [
-            82,
-            109,
-            123
+            300,
+            1080,
+            150,
+            60
         ],
         "action": "Click",
         "post_delay": 500,

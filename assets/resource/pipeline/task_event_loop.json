@@ -1,29 +1,83 @@
 {
-    "Task_Event_Loop": {
+    "Task_Bootstrap": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
         "next": "Module_Enter"
     },
-    "Module_Enter": {
+    "Loop_Stable_Monitor": {
         "next": [
-            "Action_Click_Challenge",
-            "Action_Click_CreateRoom"
+            "Check_State_Settlement",
+            "Check_State_Battle",
+            "Check_State_Support",
+            "Check_State_Room",
+            "Check_State_Lobby",
+            "Action_Wait_Retry"
         ]
     },
-    "Module_Support": {
-        "next": [
-            "Action_Select_Element",
-            "Action_Case_Found_Target",
-            "Action_Case_Not_Found",
-            "Action_Confirm_Team"
-        ]
+    "Check_State_Settlement": {
+        "recognition": "OCR",
+        "expected": "战斗获得",
+        "roi": [
+            305,
+            550,
+            120,
+            60
+        ],
+        "action": "DoNothing",
+        "next": "Action_Wait_Rewards"
     },
-    "Module_Battle": {
+    "Check_State_Battle": {
+        "recognition": "OCR",
+        "expected": "跳过",
+        "roi": [
+            300,
+            1080,
+            150,
+            60
+        ],
+        "action": "DoNothing",
         "next": "Loop_Battle_Ingame"
     },
-    "Module_Settlement": {
-        "next": [
-            "Action_Wait_Rewards",
-            "Action_Click_Skip_2",
-            "Action_Click_Confirm_Exit"
-        ]
+    "Check_State_Support": {
+        "recognition": "OCR",
+        "expected": "助战选择",
+        "roi": [
+            285,
+            220,
+            165,
+            60
+        ],
+        "action": "DoNothing",
+        "next": "Action_Select_Element"
+    },
+    "Check_State_Room": {
+        "recognition": "OCR",
+        "expected": "创建房间",
+        "roi": [
+            440,
+            1040,
+            140,
+            30
+        ],
+        "action": "Click",
+        "next": "Loop_Stable_Monitor"
+    },
+    "Check_State_Lobby": {
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            560,
+            785,
+            70,
+            45
+        ],
+        "action": "DoNothing",
+        "next": "Action_Click_Challenge"
+    },
+    "Action_Wait_Retry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 2000,
+        "next": "Loop_Stable_Monitor"
     }
 }

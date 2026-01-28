@@ -1,4 +1,10 @@
 {
+    "Module_Enter": {
+        "next": [
+            "Action_Click_Challenge",
+            "Action_Click_CreateRoom"
+        ]
+    },
     "Action_Click_Challenge": {
         "recognition": "DirectHit",
         "action": "Click",
