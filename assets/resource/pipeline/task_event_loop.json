@@ -18,7 +18,7 @@
     },
     "Check_State_Refill": {
         "recognition": "OCR",
-        "expected": "补充精力",
+        "expected": "补充",
         "roi": [
             280,
             150,

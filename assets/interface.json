@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v0.0.4",
+    "version": "v0.0.5",
     "controller": [
         {
             "name": "安卓端",
@@ -24,20 +24,29 @@
     ],
     "task": [
         {
-            "name": "活动副本",
+            "name": "古战场",
             "entry": "Loop_Stable_Monitor",
             "option": [
-                "选择副本",
-                "助战配置"
+                "副本选择",
+                "助战配置",
+                "自动补充"
+            ]
+        },
+        {
+            "name": "蹭房",
+            "entry": "Loop_Stable_Monitor",
+            "option": [
+                "配置",
+                "自动补充"
             ]
         }
     ],
     "option": {
-        "选择副本": {
-            "name": "1. 选择副本",
+        "副本选择": {
+            "name": "当前副本",
             "cases": [
                 {
-                    "name": "古战场",
+                    "name": "终末使徒",
                     "pipeline_override": {
                         "Check_State_Lobby": {
                             "expected": "挑战",
@@ -48,32 +57,50 @@
                                 45
                             ],
                             "next": "Action_Click_Challenge"
-                        },
-                        "Action_Click_Challenge": {
-                            "target": [
-                                570,
-                                750,
-                                50,
-                                50
-                            ]
                         }
                     }
-                },
+                }
+            ]
+        },
+        "配置": {
+            "name": "当前模式",
+            "cases": [
                 {
-                    "name": "常驻副本",
+                    "name": "默认配置",
                     "pipeline_override": {
                         "Check_State_Lobby": {
                             "expected": "战斗列表",
                             "roi": [
-                                10,
-                                0,
-                                180,
-                                65
+                                30,
+                                30,
+                                200,
+                                60
                             ],
                             "next": "Action_Click_Auto_Start"
                         },
                         "Check_State_Support": {
                             "next": "Loop_Stable_Monitor"
+                        }
+                    }
+                }
+            ]
+        },
+        "自动补充": {
+            "name": "功能开关：自动补充",
+            "cases": [
+                {
+                    "name": "开启",
+                    "pipeline_override": {
+                        "Check_State_Refill": {
+                            "next": "Module_Refill"
+                        }
+                    }
+                },
+                {
+                    "name": "关闭",
+                    "pipeline_override": {
+                        "Check_State_Refill": {
+                            "next": "Check_State_Settlement"
                         }
                     }
                 }

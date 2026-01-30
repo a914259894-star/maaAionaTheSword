@@ -50,15 +50,15 @@
             17,
             5
         ],
-        "target_color": [
-            46,
-            46,
-            46
+        "lower": [
+            36,
+            36,
+            36
         ],
-        "threshold": [
-            5,
-            5,
-            5
+        "upper": [
+            56,
+            56,
+            56
         ],
         "action": "Click",
         "target": [
@@ -109,15 +109,29 @@
         "next": "Action_Refill_Click_Arrow"
     },
     "Action_Refill_Click_Arrow": {
+        "recognition": "TemplateMatch",
+        "template": "Left_Arrow.png",
+        "threshold": 0.7,
+        "roi": [
+            0,
+            1170,
+            170,
+            80
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": "Loop_Stable_Monitor",
+        "on_error": "Action_Refill_Click_Arrow_Blind"
+    },
+    "Action_Refill_Click_Arrow_Blind": {
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            49,
-            1188,
-            71,
-            48
+            85,
+            1212,
+            10,
+            10
         ],
-        "post_delay": 2000,
         "next": "Loop_Stable_Monitor"
     }
 }
