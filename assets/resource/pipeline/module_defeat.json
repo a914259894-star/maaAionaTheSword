@@ -1,0 +1,47 @@
+{
+    "Action_Defeat_Handle_Revive": {
+        "next": "Action_Defeat_Click_Choice"
+    },
+    "Action_Defeat_Click_Choice": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            143,
+            785,
+            105,
+            41
+        ],
+        "post_delay": 2000,
+        "next": "Loop_Stable_Monitor"
+    },
+    "Action_Defeat_Handle_Support": {
+        "next": "Action_Defeat_Click_Cancel_Support"
+    },
+    "Action_Defeat_Click_Cancel_Support": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            34,
+            1207,
+            92,
+            48
+        ],
+        "post_delay": 2000,
+        "next": "Loop_Stable_Monitor"
+    },
+    "Action_Defeat_Handle_Result": {
+        "next": "Action_Defeat_Click_Exit"
+    },
+    "Action_Defeat_Click_Exit": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            164,
+            783,
+            107,
+            46
+        ],
+        "post_delay": 5000,
+        "next": "Loop_Stable_Monitor"
+    }
+}

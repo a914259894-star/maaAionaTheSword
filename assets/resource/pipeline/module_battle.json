@@ -38,6 +38,6 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "post_delay": 1000,
-        "next": "Loop_Battle_Ingame"
+        "next": "Loop_Stable_Monitor" 
     }
 }

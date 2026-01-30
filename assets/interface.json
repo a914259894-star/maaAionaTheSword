@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v0.0.5",
+    "version": "v0.0.6",
     "controller": [
         {
             "name": "安卓端",
@@ -29,7 +29,8 @@
             "option": [
                 "副本选择",
                 "助战配置",
-                "自动补充"
+                "复活策略",
+                "撤退策略"
             ]
         },
         {
@@ -37,7 +38,8 @@
             "entry": "Loop_Stable_Monitor",
             "option": [
                 "配置",
-                "自动补充"
+                "复活策略",
+                "撤退策略"
             ]
         }
     ],
@@ -80,27 +82,78 @@
                         },
                         "Check_State_Support": {
                             "next": "Loop_Stable_Monitor"
+                        },
+                        "Action_Click_Auto_Start": {
+                            "recognition": "OCR",
+                            "expected": "自动挂机",
+                            "roi": [
+                                330,
+                                380,
+                                85,
+                                900
+                            ]
                         }
                     }
                 }
             ]
         },
-        "自动补充": {
-            "name": "功能开关：自动补充",
+        "复活策略": {
+            "name": "战败：复活询问",
             "cases": [
                 {
-                    "name": "开启",
+                    "name": "取消",
                     "pipeline_override": {
-                        "Check_State_Refill": {
-                            "next": "Module_Refill"
+                        "Action_Defeat_Click_Choice": {
+                            "target": [
+                                143,
+                                785,
+                                105,
+                                41
+                            ]
                         }
                     }
                 },
                 {
-                    "name": "关闭",
+                    "name": "复活",
                     "pipeline_override": {
-                        "Check_State_Refill": {
-                            "next": "Check_State_Settlement"
+                        "Action_Defeat_Click_Choice": {
+                            "target": [
+                                473,
+                                786,
+                                114,
+                                40
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "撤退策略": {
+            "name": "战败：最终结算",
+            "cases": [
+                {
+                    "name": "撤退",
+                    "pipeline_override": {
+                        "Action_Defeat_Click_Exit": {
+                            "target": [
+                                164,
+                                783,
+                                107,
+                                46
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "暂离",
+                    "pipeline_override": {
+                        "Action_Defeat_Click_Exit": {
+                            "target": [
+                                463,
+                                782,
+                                124,
+                                49
+                            ]
                         }
                     }
                 }

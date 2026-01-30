@@ -12,7 +12,7 @@
             35
         ],
         "action": "Click",
-        "post_delay": 1500,
+        "post_delay": 1000,
         "next": "Action_Refill_Drag_Slider"
     },
     "Action_Refill_Drag_Slider": {
@@ -24,7 +24,7 @@
             16,
             16
         ],
-        "post_delay": 500,
+        "post_delay": 300,
         "next": "Action_Refill_Click_Minus"
     },
     "Action_Refill_Click_Minus": {
@@ -36,38 +36,39 @@
             20,
             15
         ],
-        "post_delay": 500,
+        "post_delay": 300,
+        "next": "Action_Check_Quantity_Wrapper"
+    },
+    "Action_Check_Quantity_Wrapper": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
         "next": [
-            "Action_Refill_Check_Zero",
-            "Action_Refill_Confirm_Use"
+            "Action_Case_Quantity_Safe",
+            "Action_Case_Quantity_Low"
         ]
     },
-    "Action_Refill_Check_Zero": {
-        "recognition": "ColorMatch",
+    "Action_Case_Quantity_Safe": {
+        "recognition": "OCR",
+        "expected": "0|[2-9]|\\d{2,}",
         "roi": [
-            224,
-            713,
-            17,
-            5
+            359,
+            438,
+            76,
+            43
         ],
-        "lower": [
-            36,
-            36,
-            36
-        ],
-        "upper": [
-            56,
-            56,
-            56
-        ],
+        "action": "DoNothing",
+        "next": "Action_Refill_Confirm_Use"
+    },
+    "Action_Case_Quantity_Low": {
+        "recognition": "DirectHit",
         "action": "Click",
         "target": [
             570,
             710,
             20,
             15
-        ],
-        "post_delay": 500,
+        ], 
+        "post_delay": 300,
         "next": "Action_Refill_Confirm_Use"
     },
     "Action_Refill_Confirm_Use": {
@@ -80,7 +81,7 @@
             35
         ],
         "action": "Click",
-        "post_delay": 2000,
+        "post_delay": 1500,
         "next": "Action_Refill_Click_Back_1"
     },
     "Action_Refill_Click_Back_1": {
@@ -92,7 +93,7 @@
             100,
             30
         ],
-        "post_delay": 1500,
+        "post_delay": 1000,
         "next": "Action_Refill_Click_Close"
     },
     "Action_Refill_Click_Close": {
@@ -105,7 +106,7 @@
             35
         ],
         "action": "Click",
-        "post_delay": 1500,
+        "post_delay": 500,
         "next": "Action_Refill_Click_Arrow"
     },
     "Action_Refill_Click_Arrow": {
