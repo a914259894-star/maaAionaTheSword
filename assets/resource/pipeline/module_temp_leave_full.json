@@ -1,0 +1,81 @@
+{
+    "Module_Temp_Leave_Full": {
+        "next": "Action_Full_Click_Stop_Auto"
+    },
+    "Action_Full_Click_Stop_Auto": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [ 360, 1210, 10, 10 ],
+        "post_delay": 1000,
+        "next": "Action_Full_Click_Go_List"
+    },
+    "Action_Full_Click_Go_List": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [ 413, 816, 200, 53 ],
+        "post_delay": 2000,
+        "next": "Action_Full_Click_First_Task"
+    },
+    "Action_Full_Click_First_Task": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [ 109, 134, 475, 100 ],
+        "post_delay": 3000, 
+        "next": "Action_Full_Handle_Revive"
+    },
+    "Action_Full_Handle_Revive": {
+        "recognition": "OCR",
+        "expected": "复活",
+        "roi": [ 185, 406, 352, 49 ],
+        "action": "Click",
+        "target": [ 143, 785, 105, 41 ], 
+        "post_delay": 1500,
+        "next": "Action_Full_Handle_Support"
+    },
+    "Action_Full_Handle_Support": {
+        "recognition": "OCR",
+        "expected": "支援",
+        "roi": [ 288, 220, 150, 47 ],
+        "action": "Click",
+        "target": [ 34, 1207, 92, 48 ],
+        "post_delay": 1500,
+        "next": "Action_Full_Handle_Result"
+    },
+
+    "Action_Full_Handle_Result": {
+        "recognition": "OCR",
+        "expected": "战败", 
+        "roi": [ 287, 402, 141, 51 ],
+        "action": "Click",
+        "target": [ 164, 783, 107, 46 ], 
+        "post_delay": 1500,
+        "next": "Action_Full_Confirm_Retreat"
+    },
+
+    "Action_Full_Confirm_Retreat": {
+        "recognition": "OCR",
+        "expected": "撤退",
+        "roi": [ 279, 379, 168, 49 ],
+        "action": "Click",
+        "target": [ 454, 808, 116, 54 ], 
+        "post_delay": 2000,
+        "next": "Action_Full_Final_Fail_Screen"
+    },
+
+    "Action_Full_Final_Fail_Screen": {
+        "recognition": "OCR",
+        "expected": "失败",
+        "roi": [ 240, 186, 245, 83 ],
+        "action": "Click",
+        "target": [ 334, 1207, 73, 38 ], 
+        "post_delay": 3000, 
+        "next": "Action_Full_Back_To_List"
+    },
+    "Action_Full_Back_To_List": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [ 603, 1089, 97, 43 ], 
+        "post_delay": 2000,
+        "next": "Loop_Stable_Monitor" 
+    }
+}

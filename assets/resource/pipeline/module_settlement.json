@@ -1,4 +1,27 @@
 {
+    "Action_Settlement_PreCheck_Stop": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Settlement_Stop_Found", 
+            "Case_Settlement_Stop_Gone"   
+        ]
+    },
+    "Case_Settlement_Stop_Found": {
+        "recognition": "OCR",
+        "expected": "停止",
+        "roi": [ 300, 1170, 125, 80 ],
+        "action": "Click",
+        "target": [ 360, 1210, 10, 10 ],
+        "post_delay": 1000,
+        
+        "next": "Loop_Stable_Monitor"
+    },
+    "Case_Settlement_Stop_Gone": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Action_Wait_Rewards" 
+    },
     "Action_Wait_Rewards": {
         "next": "Loop_Check_Branch"
     },
