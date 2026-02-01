@@ -67,7 +67,7 @@
             710,
             20,
             15
-        ], 
+        ],
         "post_delay": 300,
         "next": "Action_Refill_Confirm_Use"
     },
@@ -121,7 +121,7 @@
         ],
         "action": "Click",
         "post_delay": 2000,
-        "next": "Loop_Stable_Monitor",
+        "next": "Loop_Global_Monitor",
         "on_error": "Action_Refill_Click_Arrow_Blind"
     },
     "Action_Refill_Click_Arrow_Blind": {
@@ -133,6 +133,6 @@
             10,
             10
         ],
-        "next": "Loop_Stable_Monitor"
+        "next": "Loop_Global_Monitor"
     }
 }

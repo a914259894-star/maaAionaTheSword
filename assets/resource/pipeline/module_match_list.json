@@ -1,0 +1,18 @@
+{
+    "Module_Match_List": {
+        "next": "Action_Match_Click_Auto"
+    },
+    "Action_Match_Click_Auto": {
+        "recognition": "OCR",
+        "expected": "自动挂机",
+        "roi": [
+            330,
+            380,
+            85,
+            900
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": "Loop_Global_Monitor"
+    }
+}

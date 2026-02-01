@@ -1,92 +1,17 @@
 {
-    "Action_Settlement_PreCheck_Stop": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [ "Case_Settlement_Stop_Found", "Case_Settlement_Stop_Gone" ]
+    "Module_Settlement": {
+        "next": "Action_Click_Confirm_Pos"
     },
-    "Case_Settlement_Stop_Found": {
-        "recognition": "OCR",
-        "expected": "停止",
-        "roi": [ 300, 1170, 125, 80 ],
-        "action": "Click",
-        "target": [ 360, 1210, 10, 10 ],
-        "post_delay": 500,
-        "next": "Loop_Stable_Monitor"
-    },
-    "Case_Settlement_Stop_Gone": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": "Action_Wait_Rewards"
-    },
-
-    "Action_Wait_Rewards": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": "Loop_Check_Branch"
-    },
-
-    "Loop_Check_Branch": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "Case_Still_In_Settlement", 
-            "Case_Safety_Exit"          
-        ]
-    },
-
-    "Case_Still_In_Settlement": {
-        "recognition": "OCR",
-        "expected": "数据",
-        "roi": [ 591, 511, 76, 38 ], 
-        "action": "DoNothing",
-        "next": [
-            "Case_Confirm_Found",    
-            "Case_Confirm_Not_Found" 
-        ]
-    },
-
-    "Case_Safety_Exit": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": "Loop_Stable_Monitor"
-    },
-
-    "Case_Confirm_Found": {
-        "recognition": "OCR",
-        "expected": "确定",
-        "roi": [ 290, 1150, 150, 100 ],
-        "action": "DoNothing",
-        "next": "Loop_Click_Confirm_Until_Gone"
-    },
-
-    "Case_Confirm_Not_Found": {
+    "Action_Click_Confirm_Pos": {
         "recognition": "DirectHit",
         "action": "Click",
-        "target": [ 360, 640, 100, 100 ],
-        "post_delay": 150,
-        "next": "Loop_Check_Branch"
-    },
-
-    "Loop_Click_Confirm_Until_Gone": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "Case_Still_Have_Confirm",
-            "Case_No_Confirm_Exit"
-        ]
-    },
-    "Case_Still_Have_Confirm": {
-        "recognition": "OCR",
-        "expected": "确定",
-        "roi": [ 290, 1150, 150, 100 ],
-        "action": "Click",
-        "target": [ 315, 1195, 100, 30 ],
-        "post_delay": 200,
-        "next": "Loop_Click_Confirm_Until_Gone"
-    },
-    "Case_No_Confirm_Exit": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": "Loop_Stable_Monitor"
+        "target": [
+            315,
+            1195,
+            100,
+            30
+        ],
+        "post_delay": 100,
+        "next": "Loop_Global_Monitor"
     }
 }

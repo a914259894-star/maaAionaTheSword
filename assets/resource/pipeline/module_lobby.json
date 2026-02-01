@@ -1,0 +1,17 @@
+{
+    "Module_Lobby": {
+        "next": "Action_Lobby_Click_Entry"
+    },
+    "Action_Lobby_Click_Entry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            570,
+            750,
+            50,
+            50
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Global_Monitor"
+    }
+}

@@ -11,8 +11,8 @@
             105,
             41
         ],
-        "post_delay": 2000,
-        "next": "Loop_Stable_Monitor"
+        "post_delay": 500,
+        "next": "Loop_Global_Monitor"
     },
     "Action_Defeat_Handle_Support": {
         "next": "Action_Defeat_Click_Cancel_Support"
@@ -26,8 +26,8 @@
             92,
             48
         ],
-        "post_delay": 2000,
-        "next": "Loop_Stable_Monitor"
+        "post_delay": 500,
+        "next": "Loop_Global_Monitor"
     },
     "Action_Defeat_Handle_Result": {
         "next": "Action_Defeat_Click_Exit"
@@ -41,7 +41,7 @@
             107,
             46
         ],
-        "post_delay": 5000,
-        "next": "Loop_Stable_Monitor"
+        "post_delay": 500,
+        "next": "Loop_Global_Monitor"
     }
 }

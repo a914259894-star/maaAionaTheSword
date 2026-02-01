@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v0.0.7",
+    "version": "v0.2.0",
     "controller": [
         {
             "name": "安卓端",
@@ -25,7 +25,7 @@
     "task": [
         {
             "name": "蹭房",
-            "entry": "Loop_Stable_Monitor",
+            "entry": "Loop_Global_Monitor",
             "option": [
                 "配置",
                 "复活策略",
@@ -34,7 +34,7 @@
         },
         {
             "name": "古战场",
-            "entry": "Loop_Stable_Monitor",
+            "entry": "Loop_Global_Monitor",
             "option": [
                 "副本选择",
                 "助战配置",
@@ -52,26 +52,22 @@
                     "pipeline_override": {
                         "Check_State_Lobby": {
                             "expected": "战斗列表",
-                            "roi": [
-                                30,
-                                30,
-                                200,
-                                60
-                            ],
-                            "next": "Action_Click_Auto_Start"
+                            "roi": [ 605, 1094, 91, 38 ],
+                            "next": "Action_Lobby_Click_Entry"
                         },
+                        
+                        "Action_Lobby_Click_Entry": {
+                            "target": [ 605, 1094, 91, 38 ]
+                        },
+
+                        "Check_State_Match_List": {
+                            "expected": "战斗列表",
+                            "roi": [ 30, 30, 200, 60 ],
+                            "next": "Action_Match_Click_Auto"
+                        },
+                        
                         "Check_State_Support": {
-                            "next": "Loop_Stable_Monitor"
-                        },
-                        "Action_Click_Auto_Start": {
-                            "recognition": "OCR",
-                            "expected": "自动挂机",
-                            "roi": [
-                                330,
-                                380,
-                                85,
-                                900
-                            ]
+                            "next": "Loop_Global_Monitor"
                         }
                     }
                 }
@@ -91,7 +87,10 @@
                                 70,
                                 45
                             ],
-                            "next": "Action_Click_Challenge"
+                            "next": "Action_Lobby_Click_Entry"
+                        },
+                        "Check_State_Match_List": {
+                            "next": "Loop_Global_Monitor"
                         }
                     }
                 }

@@ -1,34 +1,37 @@
 {
-    "Action_Click_Auto_Start": {
-        "recognition": "OCR",
-        "expected": "自动挂机",
-        "roi": [ 330, 380, 85, 900 ],
-        "action": "Click",
-        "post_delay": 3000,
-        "next": "Loop_Stable_Monitor"
+    "Module_Daily_Stop": {
+        "next": "Action_Check_Safety_Wrapper"
     },
-
-    "Action_Check_Menu_And_Click": {
+    "Action_Check_Safety_Wrapper": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "Action_Case_Menu_Found",
-            "Action_Case_Menu_Not_Found"
+            "Case_Safe_Matching",
+            "Case_Unsafe_State"
         ]
     },
-    "Action_Case_Menu_Found": {
+    "Case_Safe_Matching": {
         "recognition": "OCR",
-        "expected": "菜单",
-        "roi": [ 648, 721, 58, 32 ],
-        "action": "Click",
-        "target": [ 360, 1210, 10, 10 ],
-        "post_delay": 500,
-        "next": "Loop_Stable_Monitor"
-    },
-    "Action_Case_Menu_Not_Found": {
-        "recognition": "DirectHit",
+        "expected": "战斗列表",
+        "roi": [
+            30,
+            30,
+            200,
+            60
+        ],
         "action": "DoNothing",
-        "post_delay": 2000, 
-        "next": "Loop_Stable_Monitor"
+        "next": "Loop_Global_Monitor"
+    },
+    "Case_Unsafe_State": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            360,
+            1210,
+            10,
+            10
+        ],
+        "post_delay": 500,
+        "next": "Loop_Global_Monitor"
     }
 }

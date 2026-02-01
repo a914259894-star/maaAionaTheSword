@@ -1,24 +1,17 @@
 {
     "Module_Support": {
-        "next": [
-            "Action_Select_Element",
-            "Action_Case_Found_Target",
-            "Action_Case_Not_Found",
-            "Action_Confirm_Team",
-            "Action_Start_Battle",
-            "Action_Confirm_Start"
-        ]
+        "next": "Action_Select_Element"
     },
     "Action_Select_Element": {
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            215,
+            100,
             300,
             50,
             40
         ],
-        "post_delay": 2000,
+        "post_delay": 1500,
         "next": [
             "Action_Case_Found_Target",
             "Action_Case_Not_Found"
@@ -26,7 +19,7 @@
     },
     "Action_Case_Found_Target": {
         "recognition": "OCR",
-        "expected": "赫拉斯",
+        "expected": "巴哈",
         "roi": [
             355,
             450,
@@ -38,7 +31,7 @@
     },
     "Action_Case_Not_Found": {
         "recognition": "OCR",
-        "expected": "赫拉斯",
+        "expected": "巴哈",
         "roi": [
             355,
             450,
@@ -64,7 +57,7 @@
             140,
             30
         ],
-        "post_delay": 2000,
+        "post_delay": 1500,
         "next": "Action_Start_Battle"
     },
     "Action_Start_Battle": {
@@ -76,7 +69,7 @@
             275,
             35
         ],
-        "post_delay": 2000,
+        "post_delay": 1500,
         "next": "Action_Confirm_Start"
     },
     "Action_Confirm_Start": {
@@ -89,6 +82,6 @@
             30
         ],
         "post_delay": 3000,
-        "next": "Module_Battle"
+        "next": "Loop_Global_Monitor"
     }
 }
