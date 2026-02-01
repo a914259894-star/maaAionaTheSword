@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v0.0.6",
+    "version": "v0.0.7",
     "controller": [
         {
             "name": "安卓端",
@@ -52,7 +52,12 @@
                     "pipeline_override": {
                         "Check_State_Lobby": {
                             "expected": "战斗列表",
-                            "roi": [ 30, 30, 200, 60 ],
+                            "roi": [
+                                30,
+                                30,
+                                200,
+                                60
+                            ],
                             "next": "Action_Click_Auto_Start"
                         },
                         "Check_State_Support": {
@@ -61,7 +66,12 @@
                         "Action_Click_Auto_Start": {
                             "recognition": "OCR",
                             "expected": "自动挂机",
-                            "roi": [ 330, 380, 85, 900 ]
+                            "roi": [
+                                330,
+                                380,
+                                85,
+                                900
+                            ]
                         }
                     }
                 }
@@ -75,7 +85,12 @@
                     "pipeline_override": {
                         "Check_State_Lobby": {
                             "expected": "挑战",
-                            "roi": [ 560, 785, 70, 45 ],
+                            "roi": [
+                                560,
+                                785,
+                                70,
+                                45
+                            ],
                             "next": "Action_Click_Challenge"
                         }
                     }
@@ -88,13 +103,27 @@
                 {
                     "name": "取消",
                     "pipeline_override": {
-                        "Action_Defeat_Click_Choice": { "target": [ 143, 785, 105, 41 ] }
+                        "Action_Defeat_Click_Choice": {
+                            "target": [
+                                143,
+                                785,
+                                105,
+                                41
+                            ]
+                        }
                     }
                 },
                 {
                     "name": "复活",
                     "pipeline_override": {
-                        "Action_Defeat_Click_Choice": { "target": [ 473, 786, 114, 40 ] }
+                        "Action_Defeat_Click_Choice": {
+                            "target": [
+                                473,
+                                786,
+                                114,
+                                40
+                            ]
+                        }
                     }
                 }
             ]
@@ -105,13 +134,27 @@
                 {
                     "name": "暂离",
                     "pipeline_override": {
-                        "Action_Defeat_Click_Exit": { "target": [ 463, 782, 124, 49 ] }
+                        "Action_Defeat_Click_Exit": {
+                            "target": [
+                                463,
+                                782,
+                                124,
+                                49
+                            ]
+                        }
                     }
                 },
                 {
                     "name": "撤退",
                     "pipeline_override": {
-                        "Action_Defeat_Click_Exit": { "target": [ 164, 783, 107, 46 ] }
+                        "Action_Defeat_Click_Exit": {
+                            "target": [
+                                164,
+                                783,
+                                107,
+                                46
+                            ]
+                        }
                     }
                 }
             ]
@@ -122,97 +165,229 @@
                 {
                     "name": "火老王",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 100, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "迪亚波罗" },
-                        "Action_Case_Not_Found":    { "expected": "迪亚波罗" }
+                        "Action_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "迪亚波罗"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "迪亚波罗"
+                        }
                     }
                 },
                 {
                     "name": "火方阵",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 100, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "苏尔特尔" },
-                        "Action_Case_Not_Found":    { "expected": "苏尔特尔" }
+                        "Action_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "苏尔特尔"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "苏尔特尔"
+                        }
                     }
                 },
                 {
                     "name": "火贵族",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 100, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "梵尽花" },
-                        "Action_Case_Not_Found":    { "expected": "梵尽花" }
+                        "Action_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "梵尽花"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "梵尽花"
+                        }
                     }
                 },
                 {
                     "name": "风老王",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 215, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "斯文托维特" },
-                        "Action_Case_Not_Found":    { "expected": "斯文托维特" }
+                        "Action_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "斯文托维特"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "斯文托维特"
+                        }
                     }
                 },
                 {
                     "name": "风方阵",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 215, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "赫拉斯瓦尔格" },
-                        "Action_Case_Not_Found":    { "expected": "赫拉斯瓦尔格" }
+                        "Action_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "赫拉斯瓦尔格"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "赫拉斯瓦尔格"
+                        }
                     }
                 },
                 {
                     "name": "风贵族",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 215, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "和音傀" },
-                        "Action_Case_Not_Found":    { "expected": "和音傀" }
+                        "Action_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "和音傀"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "和音傀"
+                        }
                     }
                 },
                 {
                     "name": "土老王",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 325, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "阿格莱亚" },
-                        "Action_Case_Not_Found":    { "expected": "阿格莱亚" }
+                        "Action_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "阿格莱亚"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "阿格莱亚"
+                        }
                     }
                 },
                 {
                     "name": "土方阵",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 325, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "伊南娜" },
-                        "Action_Case_Not_Found":    { "expected": "伊南娜" }
+                        "Action_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "伊南娜"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "伊南娜"
+                        }
                     }
                 },
                 {
                     "name": "土贵族",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 325, 300, 50, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "断裁偶" },
-                        "Action_Case_Not_Found":    { "expected": "断裁偶" }
+                        "Action_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "断裁偶"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "断裁偶"
+                        }
                     }
                 },
                 {
                     "name": "水老王",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 435, 300, 60, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "欧若拉" },
-                        "Action_Case_Not_Found":    { "expected": "欧若拉" }
+                        "Action_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "欧若拉"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "欧若拉"
+                        }
                     }
                 },
                 {
                     "name": "水方阵",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 435, 300, 60, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "卡律布狄斯" },
-                        "Action_Case_Not_Found":    { "expected": "卡律布狄斯" }
+                        "Action_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "卡律布狄斯"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "卡律布狄斯"
+                        }
                     }
                 },
                 {
                     "name": "水贵族",
                     "pipeline_override": {
-                        "Action_Select_Element": { "target": [ 435, 300, 60, 40 ] },
-                        "Action_Case_Found_Target": { "expected": "欲望泉" },
-                        "Action_Case_Not_Found":    { "expected": "欲望泉" }
+                        "Action_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Case_Found_Target": {
+                            "expected": "欲望泉"
+                        },
+                        "Action_Case_Not_Found": {
+                            "expected": "欲望泉"
+                        }
                     }
                 }
             ]

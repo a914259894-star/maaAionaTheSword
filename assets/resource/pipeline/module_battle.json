@@ -2,6 +2,7 @@
     "Module_Battle": {
         "next": "Loop_Battle_Ingame"
     },
+
     "Loop_Battle_Ingame": {
         "next": [
             "Action_Check_Battle_End",
@@ -9,35 +10,28 @@
             "Action_Battle_Wait"
         ]
     },
+
     "Action_Check_Battle_End": {
         "recognition": "OCR",
         "expected": "战斗获得",
-        "roi": [
-            305,
-            550,
-            120,
-            60
-        ],
+        "roi": [ 305, 550, 120, 60 ],
         "action": "DoNothing",
         "next": "Action_Wait_Rewards"
     },
+
     "Action_Battle_Skip_Turn": {
         "recognition": "OCR",
         "expected": "跳过",
-        "roi": [
-            300,
-            1080,
-            150,
-            60
-        ],
+        "roi": [ 300, 1080, 150, 60 ],
         "action": "Click",
         "post_delay": 500,
-        "next": "Loop_Battle_Ingame"
+        "next": "Loop_Stable_Monitor"
     },
+
     "Action_Battle_Wait": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "post_delay": 1000,
-        "next": "Loop_Stable_Monitor" 
+        "next": "Loop_Stable_Monitor"
     }
 }
