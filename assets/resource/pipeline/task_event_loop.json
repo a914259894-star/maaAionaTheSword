@@ -25,12 +25,12 @@
     },
     "Check_State_Daily_Stop": {
         "recognition": "OCR",
-        "expected": "停止",
+        "expected": "[停止挂掛机]",
         "roi": [
-            300,
-            1170,
-            125,
-            80
+            330,
+            1189,
+            84,
+            36
         ],
         "action": "DoNothing",
         "next": "Module_Daily_Stop"
