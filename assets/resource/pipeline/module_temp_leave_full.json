@@ -1,17 +1,5 @@
 {
     "Module_Temp_Leave_Full": {
-        "next": "Action_Full_Click_Stop_Auto"
-    },
-    "Action_Full_Click_Stop_Auto": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            360,
-            1210,
-            10,
-            10
-        ],
-        "post_delay": 1000,
         "next": "Action_Full_Click_Go_List"
     },
     "Action_Full_Click_Go_List": {
@@ -24,9 +12,112 @@
             53
         ],
         "post_delay": 2000,
-        "next": "Action_Full_Click_First_Task"
+        "next": "Action_Click_Enter_Pending"
     },
-    "Action_Full_Click_First_Task": {
+    "Action_Click_Enter_Pending": {
+        "recognition": "OCR",
+        "expected": "待确认",
+        "roi": [
+            551,
+            1126,
+            110,
+            53
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": "Loop_Check_Pending_Wrapper"
+    },
+    "Loop_Check_Pending_Wrapper": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Pending_Task_Found",
+            "Case_Pending_Task_Gone"
+        ]
+    },
+    "Case_Pending_Task_Found": {
+        "recognition": "OCR",
+        "expected": "待领取报酬",
+        "roi": [
+            513,
+            417,
+            135,
+            53
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": "Loop_Click_Settlement_Until_Back"
+    },
+    "Case_Pending_Task_Gone": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            21,
+            1218,
+            109,
+            50
+        ],
+        "post_delay": 2000,
+        "next": "Action_Check_Full_Position_Wrapper"
+    },
+    "Loop_Click_Settlement_Until_Back": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Back_To_Pending_List",
+            "Case_Still_In_Settlement"
+        ]
+    },
+    "Case_Back_To_Pending_List": {
+        "recognition": "OCR",
+        "expected": "待确认",
+        "roi": [
+            292,
+            174,
+            135,
+            52
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Check_Pending_Wrapper"
+    },
+    "Case_Still_In_Settlement": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            334,
+            1207,
+            73,
+            38
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Click_Settlement_Until_Back"
+    },
+    "Action_Check_Full_Position_Wrapper": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Full_Found",
+            "Case_Full_Not_Found"
+        ]
+    },
+    "Case_Full_Found": {
+        "recognition": "OCR",
+        "expected": "自动挂机",
+        "roi": [
+            326,
+            735,
+            94,
+            32
+        ],
+        "action": "DoNothing",
+        "next": "Action_Full_Click_First_Temp_Task"
+    },
+    "Case_Full_Not_Found": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Global_Monitor"
+    },
+    "Action_Full_Click_First_Temp_Task": {
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
@@ -131,18 +222,6 @@
             38
         ],
         "post_delay": 3000,
-        "next": "Action_Full_Back_To_List"
-    },
-    "Action_Full_Back_To_List": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            603,
-            1089,
-            97,
-            43
-        ],
-        "post_delay": 2000,
         "next": "Loop_Global_Monitor"
     }
 }
