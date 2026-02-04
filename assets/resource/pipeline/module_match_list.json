@@ -1,18 +1,27 @@
 {
     "Module_Match_List": {
-        "next": "Action_Match_Click_Auto"
+        "next": "Action_Match_Check_Wrapper"
     },
-    "Action_Match_Click_Auto": {
+
+    "Action_Match_Check_Wrapper": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Auto_Start_Found", 
+            "Case_Auto_Start_Gone"   
+        ]
+    },
+    "Case_Auto_Start_Found": {
         "recognition": "OCR",
         "expected": "自动挂机",
-        "roi": [
-            330,
-            380,
-            85,
-            900
-        ],
+        "roi": [ 330, 380, 85, 900 ],
         "action": "Click",
-        "post_delay": 1000,
+        "next": "Loop_Global_Monitor"
+    },
+    "Case_Auto_Start_Gone": {
+        "recognition": "DirectHit", 
+        "action": "DoNothing",
+        
         "next": "Loop_Global_Monitor"
     }
 }
