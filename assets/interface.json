@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v0.2.0",
+    "version": "v1.0.0",
     "controller": [
         {
             "name": "安卓端",
@@ -123,6 +123,31 @@
                         1210,
                         10,
                         10
+                    ]
+                }
+            }
+        },
+        {
+            "name": "桃符传说",
+            "entry": "Loop_Global_Monitor",
+            "option": [],
+            "pipeline_override": {
+                "Check_State_Settlement": {
+                    "expected": "战斗获得",
+                    "roi": [
+                        305,
+                        550,
+                        120,
+                        60
+                    ],
+                    "next": "Module_Settlement"
+                },
+                "Action_Click_Confirm_Pos": {
+                    "target": [
+                        99,
+                        1193,
+                        130,
+                        31
                     ]
                 }
             }

@@ -19,7 +19,13 @@
             200,
             60
         ],
-        "action": "DoNothing",
+        "action": "Click",
+        "target": [
+            117,
+            386,
+            45,
+            15
+        ],
         "next": "Loop_Global_Monitor"
     },
     "Case_Unsafe_State": {

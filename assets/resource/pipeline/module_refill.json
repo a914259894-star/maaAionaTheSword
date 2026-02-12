@@ -4,7 +4,7 @@
     },
     "Action_Refill_Click_Use_Entry": {
         "recognition": "OCR",
-        "expected": "使用",
+        "expected": "使|用",
         "roi": [
             505,
             675,
@@ -73,7 +73,7 @@
     },
     "Action_Refill_Confirm_Use": {
         "recognition": "OCR",
-        "expected": "使用",
+        "expected": "使|用",
         "roi": [
             485,
             805,
