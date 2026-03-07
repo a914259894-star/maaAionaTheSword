@@ -1,0 +1,174 @@
+{
+    "Task_Mech_Auto_Entry": {
+        "recognition": "OCR",
+        "expected": "元素自律机械",
+        "roi": [
+            14,
+            212,
+            157,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            14,
+            212,
+            157,
+            41
+        ],
+        "next": "Loop_Mech_Auto"
+    },
+    "Loop_Mech_Auto": {
+        "next": [
+            "Check_Mech_Auto_Stop_Insufficient",
+            "Check_Mech_Auto_Popup_Mech_Challenge",
+            "Check_Mech_Auto_Friend_Request",
+            "Check_Mech_Auto_Settlement",
+            "Check_State_Battle",
+            "Check_State_Support",
+            "Check_State_Defeat_Revive",
+            "Check_State_Defeat_Support",
+            "Check_State_Defeat_Result",
+            "Check_Mech_Auto_Start_Battle",
+            "Check_Mech_Auto_Challenge",
+            "Check_Mech_Auto_Entry"
+        ]
+    },
+    "Check_Mech_Auto_Stop_Insufficient": {
+        "recognition": "OCR",
+        "expected": "挑战次数不足",
+        "roi": [
+            248,
+            1060,
+            226,
+            57
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            1216,
+            107,
+            49
+        ],
+        "next": "Action_Mech_Auto_Stop_Task"
+    },
+    "Action_Mech_Auto_Stop_Task": {
+        "recognition": "DirectHit",
+        "action": "StopTask"
+    },
+    "Check_Mech_Auto_Entry": {
+        "recognition": "OCR",
+        "expected": "元素自律机械",
+        "roi": [
+            14,
+            212,
+            157,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            14,
+            212,
+            157,
+            41
+        ],
+        "next": "Loop_Mech_Auto"
+    },
+    "Check_Mech_Auto_Popup_Mech_Challenge": {
+        "recognition": "OCR",
+        "expected": "挑战机神",
+        "roi": [
+            87,
+            622,
+            125,
+            51
+        ],
+        "action": "Click",
+        "target": [
+            167,
+            798,
+            83,
+            45
+        ],
+        "next": "Loop_Mech_Auto"
+    },
+    "Check_Mech_Auto_Friend_Request": {
+        "recognition": "OCR",
+        "expected": "申请",
+        "roi": [
+            280,
+            352,
+            160,
+            68
+        ],
+        "next": "Action_Friend_Request_Cancel"
+    },
+    "Action_Friend_Request_Cancel": {
+        "recognition": "OCR",
+        "expected": [
+            "取消",
+            "拒绝"
+        ],
+        "roi": [
+            0,
+            0,
+            720,
+            1280
+        ],
+        "action": "Click",
+        "next": "Loop_Mech_Auto"
+    },
+    "Check_Mech_Auto_Settlement": {
+        "recognition": "OCR",
+        "expected": "战斗获得",
+        "roi": [
+            310,
+            560,
+            102,
+            44
+        ],
+        "action": "Click",
+        "target": [
+            315,
+            1195,
+            100,
+            30
+        ],
+        "next": "Loop_Mech_Auto"
+    },
+    "Check_Mech_Auto_Start_Battle": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "roi": [
+            295,
+            1100,
+            129,
+            38
+        ],
+        "action": "Click",
+        "target": [
+            295,
+            1100,
+            129,
+            38
+        ],
+        "next": "Loop_Mech_Auto"
+    },
+    "Check_Mech_Auto_Challenge": {
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            307,
+            1067,
+            117,
+            50
+        ],
+        "action": "Click",
+        "target": [
+            307,
+            1067,
+            117,
+            50
+        ],
+        "next": "Loop_Mech_Auto"
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "Module_Mech_Explore": {
+        "next": "Action_Mech_Click_Explore"
+    },
+    "Action_Mech_Click_Explore": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            375,
+            1067,
+            66,
+            37
+        ],
+        "next": "Loop_Mech_Explore"
+    },
+    "Loop_Mech_Explore": {
+        "next": [
+            "Check_State_Refill",
+            "Check_State_Friend_Request",
+            "Check_State_Defeat_Revive",
+            "Check_State_Defeat_Support",
+            "Check_State_Defeat_Result",
+            "Check_State_Settlement",
+            "Check_State_Mech_Challenge",
+            "Check_State_Mech_Start",
+            "Check_State_Mech_Explore",
+            "Check_State_Battle",
+            "Check_State_Support"
+        ]
+    },
+    "Action_Mech_Click_Challenge": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            361,
+            1088,
+            10,
+            10
+        ],
+        "next": "Loop_Mech_Explore"
+    },
+    "Action_Mech_Click_Start": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            355,
+            1125,
+            10,
+            10
+        ],
+        "next": "Loop_Mech_Explore"
+    }
+}

@@ -6,7 +6,7 @@
     "license": "MIT",
     "welcome": "欢迎使用!",
     "github": "https://github.com/a914259894-star/maaAionaTheSword",
-    "version": "v1.0.0",
+    "version": "1.0.0",
     "controller": [
         {
             "name": "安卓端",
@@ -24,63 +24,78 @@
     ],
     "task": [
         {
-            "name": "蹭房",
+            "name": "机神",
             "entry": "Loop_Global_Monitor",
             "option": [
-                "复活策略",
-                "撤退策略"
+                "模式选择"
+            ]
+        },
+        {
+            "name": "日常一条龙",
+            "entry": "Task_Daily_Routine_Start",
+            "option": [
+                "元素塔",
+                "骑士团",
+                "商店",
+                "资源副本",
+                "每日任务",
+                "结束后动作"
             ],
             "pipeline_override": {
-                "Check_State_Lobby": {
-                    "expected": "战斗列表",
-                    "roi": [
-                        605,
-                        1094,
-                        91,
-                        38
-                    ],
-                    "next": "Action_Lobby_Click_Entry"
+                "Loop_Global_Monitor": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Check_State_Friend_Request": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Check_State_Room": {
+                    "next": "Loop_Daily_Routine"
                 },
                 "Action_Lobby_Click_Entry": {
-                    "target": [
-                        605,
-                        1094,
-                        91,
-                        38
-                    ]
+                    "next": "Loop_Daily_Routine"
                 },
-                "Check_State_Match_List": {
-                    "expected": "战斗列表",
-                    "roi": [
-                        30,
-                        30,
-                        200,
-                        60
-                    ],
-                    "next": "Module_Match_List"
+                "Case_Skip_Found": {
+                    "next": "Loop_Daily_Routine"
                 },
-                "Check_State_Support": {
-                    "next": "Loop_Global_Monitor"
+                "Case_Skip_Not_Found": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Confirm_Start": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Click_Confirm_Pos": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Defeat_Click_Choice": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Defeat_Click_Cancel_Support": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Defeat_Click_Exit": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Refill_Click_Arrow": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Refill_Click_Arrow_Blind": {
+                    "next": "Loop_Daily_Routine"
+                },
+                "Action_Wait_Retry": {
+                    "next": "Loop_Daily_Routine"
                 }
             }
         },
         {
-            "name": "古战场",
-            "entry": "Loop_Global_Monitor",
-            "option": [
-                "副本选择",
-                "助战配置",
-                "复活策略",
-                "撤退策略"
-            ]
-        },
-        {
             "name": "素材本",
-            "entry": "Loop_Global_Monitor",
+            "entry": "Loop_Material_Dungeon",
             "option": [
                 "助战配置"
             ],
             "pipeline_override": {
+                "Check_State_Friend_Request": {
+                    "next": "Loop_Material_Dungeon"
+                },
                 "Check_State_Lobby": {
                     "expected": "开始挑战",
                     "roi": [
@@ -97,7 +112,8 @@
                         1090,
                         10,
                         10
-                    ]
+                    ],
+                    "next": "Loop_Material_Dungeon"
                 },
                 "Action_Start_Battle": {
                     "target": [
@@ -108,52 +124,1011 @@
                     ]
                 },
                 "Check_State_Settlement": {
-                    "expected": "再次挑战",
+                    "expected": "挑战下一关",
                     "roi": [
-                        189,
+                        91,
                         1194,
-                        118,
-                        31
+                        141,
+                        38
                     ],
                     "next": "Module_Settlement"
                 },
-                "Action_Click_Confirm_Pos": {
-                    "target": [
-                        248,
-                        1210,
-                        10,
-                        10
-                    ]
-                }
-            }
-        },
-        {
-            "name": "桃符传说",
-            "entry": "Loop_Global_Monitor",
-            "option": [],
-            "pipeline_override": {
-                "Check_State_Settlement": {
-                    "expected": "战斗获得",
-                    "roi": [
-                        305,
-                        550,
-                        120,
-                        60
-                    ],
-                    "next": "Module_Settlement"
+                "Check_State_Refill": {
+                    "expected": "补充体力"
+                },
+                "Action_Confirm_Start": {
+                    "next": "Loop_Material_Dungeon"
                 },
                 "Action_Click_Confirm_Pos": {
                     "target": [
-                        99,
+                        91,
                         1193,
-                        130,
-                        31
-                    ]
+                        141,
+                        38
+                    ],
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Case_Skip_Found": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Case_Skip_Not_Found": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Action_Defeat_Click_Choice": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Action_Defeat_Click_Cancel_Support": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Action_Defeat_Click_Exit": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Action_Refill_Click_Arrow": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Action_Refill_Click_Arrow_Blind": {
+                    "next": "Loop_Material_Dungeon"
+                },
+                "Action_Wait_Retry": {
+                    "next": "Loop_Material_Dungeon"
                 }
             }
         }
     ],
     "option": {
+        "模式选择": {
+            "name": "机神模式",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "探索",
+                    "pipeline_override": {
+                        "Loop_Global_Monitor": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Check_State_Lobby": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Check_State_Friend_Request": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Check_State_Mech_Explore": {
+                            "next": "Module_Mech_Explore"
+                        },
+                        "Check_State_Settlement": {
+                            "expected": "战斗获得",
+                            "roi": [
+                                305,
+                                550,
+                                120,
+                                60
+                            ],
+                            "next": "Module_Settlement"
+                        },
+                        "Case_Skip_Found": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Case_Skip_Not_Found": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Action_Confirm_Team": {
+                            "next": "Action_Start_Battle"
+                        },
+                        "Action_Start_Battle": {
+                            "next": "Action_Confirm_Start"
+                        },
+                        "Action_Confirm_Start": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Action_Defeat_Handle_Revive": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Action_Defeat_Handle_Support": {
+                            "next": "Loop_Mech_Explore"
+                        },
+                        "Action_Defeat_Handle_Result": {
+                            "next": "Loop_Mech_Explore"
+                        }
+                    }
+                },
+                {
+                    "name": "自律机械",
+                    "pipeline_override": {
+                        "Loop_Global_Monitor": {
+                            "next": "Task_Mech_Auto_Entry"
+                        },
+                        "Action_Start_Battle": {
+                            "next": "Loop_Mech_Auto"
+                        },
+                        "Action_Confirm_Start": {
+                            "next": "Loop_Mech_Auto"
+                        },
+                        "Case_Skip_Found": {
+                            "next": "Loop_Mech_Auto"
+                        },
+                        "Case_Skip_Not_Found": {
+                            "next": "Loop_Mech_Auto"
+                        },
+                        "Action_Confirm_Team": {
+                            "next": "Action_Start_Battle"
+                        },
+                        "Action_Defeat_Handle_Revive": {
+                            "next": "Loop_Mech_Auto"
+                        },
+                        "Action_Defeat_Handle_Support": {
+                            "next": "Loop_Mech_Auto"
+                        },
+                        "Action_Defeat_Handle_Result": {
+                            "next": "Loop_Mech_Auto"
+                        }
+                    }
+                },
+                {
+                    "name": "机神挑战",
+                    "pipeline_override": {
+                        "Loop_Global_Monitor": {
+                            "next": "Task_Mech_Challenge_Entry"
+                        },
+                        "Action_Start_Battle": {
+                            "next": "Action_Confirm_Start"
+                        },
+                        "Action_Confirm_Start": {
+                            "next": "Loop_Mech_Challenge"
+                        },
+                        "Action_Confirm_Team": {
+                            "next": "Action_Start_Battle"
+                        },
+                        "Case_Skip_Found": {
+                            "next": "Loop_Mech_Challenge"
+                        },
+                        "Case_Skip_Not_Found": {
+                            "next": "Loop_Mech_Challenge"
+                        },
+                        "Check_State_Friend_Request": {
+                            "next": "Loop_Mech_Challenge"
+                        },
+                        "Action_Defeat_Handle_Revive": {
+                            "next": "Loop_Mech_Challenge"
+                        },
+                        "Action_Defeat_Handle_Support": {
+                            "next": "Loop_Mech_Challenge"
+                        },
+                        "Action_Defeat_Handle_Result": {
+                            "next": "Loop_Mech_Challenge"
+                        }
+                    }
+                }
+            ]
+        },
+        "元素塔": {
+            "name": "1. 元素塔",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {},
+                    "option": [
+                        "普通收获",
+                        "快速收获"
+                    ]
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Tower_Entry": {
+                            "next": "Step_Knight_Entry"
+                        }
+                    }
+                }
+            ]
+        },
+        "普通收获": {
+            "name": "普通收获",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Tower_Normal": {
+                            "next": "Step_Tower_Fast"
+                        }
+                    }
+                }
+            ]
+        },
+        "快速收获": {
+            "name": "快速收获",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Tower_Fast": {
+                            "next": "Step_Knight_Entry"
+                        }
+                    }
+                }
+            ]
+        },
+        "骑士团": {
+            "name": "2. 骑士团任务",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Knight_Entry": {
+                            "next": "Step_Knight_Shop_Entry"
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {},
+                    "option": [
+                        "捐献",
+                        "增益"
+                    ]
+                }
+            ]
+        },
+        "捐献": {
+            "name": "捐献",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Knight_Donate": {
+                            "next": "Step_Knight_Buff"
+                        }
+                    }
+                }
+            ]
+        },
+        "增益": {
+            "name": "增益",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Knight_Buff": {
+                            "next": "Step_Knight_Shop_Entry"
+                        }
+                    }
+                }
+            ]
+        },
+        "商店": {
+            "name": "商店",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Knight_Shop_Entry": {
+                            "next": "Step_Dungeon_Entry"
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {},
+                    "option": [
+                        "10魂石",
+                        "星间通信书"
+                    ]
+                }
+            ]
+        },
+        "10魂石": {
+            "name": "10魂石",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Knight_Shop_Stone": {
+                            "next": "Step_Knight_Shop_Book"
+                        }
+                    }
+                }
+            ]
+        },
+        "星间通信书": {
+            "name": "星间通信书",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Knight_Shop_Book": {
+                            "next": "Loop_Shop_Back_Menu"
+                        }
+                    }
+                }
+            ]
+        },
+        "资源副本": {
+            "name": "3. 资源副本",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Dungeon_Entry": {
+                            "next": "Step_Daily_Quest"
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {},
+                    "option": [
+                        "猎金自发",
+                        "黑爷爷自发"
+                    ]
+                }
+            ]
+        },
+        "猎金自发": {
+            "name": "猎金自发",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {},
+                    "option": [
+                        "猎金助战配置",
+                        "猎金复活选项"
+                    ]
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Dungeon_Gold": {
+                            "next": "Step_Dungeon_Black"
+                        }
+                    }
+                }
+            ]
+        },
+        "黑爷爷自发": {
+            "name": "黑爷爷自发",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {},
+                    "option": [
+                        "黑爷爷助战配置",
+                        "黑爷爷复活选项"
+                    ]
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Dungeon_Black": {
+                            "next": "Step_Daily_Quest"
+                        }
+                    }
+                }
+            ]
+        },
+        "猎金复活选项": {
+            "name": "猎金复活选项",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "取消",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Defeat_Revive_Choice": {
+                            "target": [
+                                143,
+                                785,
+                                105,
+                                41
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "复活",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Defeat_Revive_Choice": {
+                            "target": [
+                                473,
+                                786,
+                                114,
+                                40
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "黑爷爷复活选项": {
+            "name": "黑爷爷复活选项",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "取消",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Defeat_Revive_Choice": {
+                            "target": [
+                                143,
+                                785,
+                                105,
+                                41
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "复活",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Defeat_Revive_Choice": {
+                            "target": [
+                                473,
+                                786,
+                                114,
+                                40
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "猎金助战配置": {
+            "name": "猎金助战配置",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "火老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "迪亚波罗"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "迪亚波罗"
+                        }
+                    }
+                },
+                {
+                    "name": "火方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "苏尔特尔"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "苏尔特尔"
+                        }
+                    }
+                },
+                {
+                    "name": "火贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "梵尽花"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "梵尽花"
+                        }
+                    }
+                },
+                {
+                    "name": "风老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "斯文托维特"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "斯文托维特"
+                        }
+                    }
+                },
+                {
+                    "name": "风方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "赫拉斯瓦尔格"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "赫拉斯瓦尔格"
+                        }
+                    }
+                },
+                {
+                    "name": "风贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "和音傀"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "和音傀"
+                        }
+                    }
+                },
+                {
+                    "name": "土老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "阿格莱亚"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "阿格莱亚"
+                        }
+                    }
+                },
+                {
+                    "name": "土方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "伊南娜"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "伊南娜"
+                        }
+                    }
+                },
+                {
+                    "name": "土贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "断裁偶"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "断裁偶"
+                        }
+                    }
+                },
+                {
+                    "name": "水老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "欧若拉"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "欧若拉"
+                        }
+                    }
+                },
+                {
+                    "name": "水方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "卡律布狄斯"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "卡律布狄斯"
+                        }
+                    }
+                },
+                {
+                    "name": "水贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Gold_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Gold_Case_Found_Target": {
+                            "expected": "欲望泉"
+                        },
+                        "Action_Dungeon_Gold_Case_Not_Found": {
+                            "expected": "欲望泉"
+                        }
+                    }
+                }
+            ]
+        },
+        "黑爷爷助战配置": {
+            "name": "黑爷爷助战配置",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "火老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "迪亚波罗"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "迪亚波罗"
+                        }
+                    }
+                },
+                {
+                    "name": "火方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "苏尔特尔"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "苏尔特尔"
+                        }
+                    }
+                },
+                {
+                    "name": "火贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                100,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "梵尽花"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "梵尽花"
+                        }
+                    }
+                },
+                {
+                    "name": "风老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "斯文托维特"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "斯文托维特"
+                        }
+                    }
+                },
+                {
+                    "name": "风方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "赫拉斯瓦尔格"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "赫拉斯瓦尔格"
+                        }
+                    }
+                },
+                {
+                    "name": "风贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                215,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "和音傀"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "和音傀"
+                        }
+                    }
+                },
+                {
+                    "name": "土老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "阿格莱亚"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "阿格莱亚"
+                        }
+                    }
+                },
+                {
+                    "name": "土方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "伊南娜"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "伊南娜"
+                        }
+                    }
+                },
+                {
+                    "name": "土贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                325,
+                                300,
+                                50,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "断裁偶"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "断裁偶"
+                        }
+                    }
+                },
+                {
+                    "name": "水老王",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "欧若拉"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "欧若拉"
+                        }
+                    }
+                },
+                {
+                    "name": "水方阵",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "卡律布狄斯"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "卡律布狄斯"
+                        }
+                    }
+                },
+                {
+                    "name": "水贵族",
+                    "pipeline_override": {
+                        "Action_Dungeon_Black_Select_Element": {
+                            "target": [
+                                435,
+                                300,
+                                60,
+                                40
+                            ]
+                        },
+                        "Action_Dungeon_Black_Case_Found_Target": {
+                            "expected": "欲望泉"
+                        },
+                        "Action_Dungeon_Black_Case_Not_Found": {
+                            "expected": "欲望泉"
+                        }
+                    }
+                }
+            ]
+        },
+        "每日任务": {
+            "name": "4. 日常任务 (一键领取)",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Step_Daily_Quest": {
+                            "next": "Step_End_AFK"
+                        }
+                    }
+                }
+            ]
+        },
+        "结束后动作": {
+            "name": "5. 结束后动作",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "开始挂机",
+                    "pipeline_override": {},
+                    "option": [
+                        "筛选"
+                    ]
+                },
+                {
+                    "name": "停止运行",
+                    "pipeline_override": {
+                        "Step_End_AFK": {
+                            "action": "StopTask"
+                        }
+                    }
+                }
+            ]
+        },
+        "筛选": {
+            "name": "筛选",
+            "type": "select",
+            "cases": [
+                {
+                    "name": "当前筛选",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "猎金",
+                    "pipeline_override": {
+                        "Step_End_AFK": {
+                            "next": "Step_End_AFK_Gold_OpenList"
+                        }
+                    }
+                }
+            ]
+        },
         "副本选择": {
             "name": "当前副本",
             "cases": [

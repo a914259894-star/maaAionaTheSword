@@ -1,0 +1,163 @@
+{
+    "Task_Mech_Challenge_Entry": {
+        "recognition": "OCR",
+        "expected": "机神降临",
+        "roi": [
+            237,
+            314,
+            285,
+            100
+        ],
+        "action": "Click",
+        "next": "Loop_Mech_Challenge"
+    },
+    "Loop_Mech_Challenge": {
+        "next": [
+            "Check_State_Friend_Request",
+            "Check_State_Defeat_Revive",
+            "Check_State_Defeat_Support",
+            "Check_State_Defeat_Result",
+            "Check_Mech_Challenge_Settlement_Direct",
+            "Check_Mech_Challenge_Rechallenge",
+            "Check_Mech_Challenge_Battle",
+            "Check_Mech_Challenge_Support",
+            "Check_Mech_Challenge_Popup_Mech_Challenge",
+            "Check_Mech_Challenge_Create_Room",
+            "Check_Mech_Challenge_Confirm_Team",
+            "Check_Mech_Challenge_Confirm_Start",
+            "Check_Mech_Challenge_Start_Battle"
+        ]
+    },
+    "Check_Mech_Challenge_Battle": {
+        "recognition": "OCR",
+        "expected": "菜单",
+        "roi": [
+            648,
+            721,
+            58,
+            32
+        ],
+        "action": "DoNothing",
+        "next": "Module_Battle"
+    },
+    "Check_Mech_Challenge_Support": {
+        "recognition": "OCR",
+        "expected": "助战选择",
+        "roi": [
+            285,
+            220,
+            165,
+            60
+        ],
+        "action": "DoNothing",
+        "next": "Module_Support"
+    },
+    "Check_Mech_Challenge_Settlement_Direct": {
+        "recognition": "OCR",
+        "expected": "数据",
+        "roi": [
+            605,
+            514,
+            63,
+            31
+        ],
+        "action": "Click",
+        "target": [
+            318,
+            1190,
+            79,
+            39
+        ],
+        "next": "Loop_Mech_Challenge"
+    },
+    "Check_Mech_Challenge_Rechallenge": {
+        "recognition": "OCR",
+        "expected": "挑战机神",
+        "roi": [
+            594,
+            1230,
+            109,
+            37
+        ],
+        "action": "Click",
+        "target": [
+            594,
+            1230,
+            109,
+            37
+        ],
+        "next": "Loop_Mech_Challenge"
+    },
+    "Check_Mech_Challenge_Popup_Mech_Challenge": {
+        "recognition": "OCR",
+        "expected": "挑战机神",
+        "roi": [
+            87,
+            622,
+            125,
+            51
+        ],
+        "action": "Click",
+        "target": [
+            476,
+            801,
+            66,
+            39
+        ],
+        "next": "Loop_Mech_Challenge"
+    },
+    "Check_Mech_Challenge_Create_Room": {
+        "recognition": "OCR",
+        "expected": "创建房间",
+        "roi": [
+            438,
+            1034,
+            150,
+            41
+        ],
+        "action": "Click",
+        "next": "Loop_Mech_Challenge"
+    },
+    "Check_Mech_Challenge_Confirm_Team": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            314,
+            1026,
+            93,
+            43
+        ],
+        "action": "Click",
+        "next": "Loop_Mech_Challenge"
+    },
+    "Check_Mech_Challenge_Start_Battle": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "roi": [
+            477,
+            1195,
+            138,
+            49
+        ],
+        "action": "Click",
+        "next": "Loop_Mech_Challenge"
+    },
+    "Check_Mech_Challenge_Confirm_Start": {
+        "recognition": "OCR",
+        "expected": "是否开始战斗",
+        "roi": [
+            240,
+            549,
+            188,
+            72
+        ],
+        "action": "Click",
+        "target": [
+            473,
+            833,
+            90,
+            48
+        ],
+        "next": "Loop_Mech_Challenge"
+    }
+}

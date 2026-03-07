@@ -4,66 +4,3340 @@
         "action": "DoNothing",
         "next": "Loop_Global_Monitor"
     },
+    "Task_Daily_Routine_Start": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Step_Tower_Entry"
+    },
+    "Step_Tower_Entry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Tower_Entry_Start"
+    },
+    "Loop_Tower_Entry_Start": {
+        "next": [
+            "Step_Tower_Normal",
+            "Action_Tower_Open_AFK_Page",
+            "Action_Tower_Click_Ancient",
+            "Action_Tower_Entry_Keepalive"
+        ]
+    },
+    "Action_Tower_Entry_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Tower_Entry_Start"
+    },
+    "Step_Tower_Normal": {
+        "recognition": "OCR",
+        "expected": "挂机收益",
+        "roi": [
+            216,
+            186,
+            296,
+            75
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Tower_Normal_Action"
+    },
+    "Loop_Tower_Normal_Action": {
+        "next": [
+            "Action_Tower_Normal_Harvest",
+            "Step_Tower_Fast",
+            "Action_Tower_Normal_Keepalive"
+        ]
+    },
+    "Action_Tower_Normal_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Tower_Normal_Action"
+    },
+    "Step_Tower_Fast": {
+        "recognition": "OCR",
+        "expected": "挂机收益",
+        "roi": [
+            216,
+            186,
+            296,
+            75
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Tower_Fast_Decide"
+    },
+    "Action_Tower_Click_Ancient": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "Click",
+        "target": [
+            664,
+            745,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Action_Tower_Open_AFK_Page"
+    },
+    "Action_Tower_Open_AFK_Page": {
+        "recognition": "OCR",
+        "expected": "古代宝库之塔",
+        "roi": [
+            187,
+            53,
+            196,
+            53
+        ],
+        "action": "Click",
+        "target": [
+            526,
+            1119,
+            87,
+            54
+        ],
+        "post_delay": 1000,
+        "next": "Step_Tower_Normal"
+    },
+    "Action_Tower_Normal_Harvest": {
+        "recognition": "OCR",
+        "expected": "收获",
+        "roi": [
+            475,
+            1058,
+            83,
+            45
+        ],
+        "action": "Click",
+        "target": [
+            509,
+            1073,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Tower_Normal_Result"
+    },
+    "Loop_Tower_Normal_Result": {
+        "next": [
+            "Check_Tower_Normal_Reward",
+            "Check_Tower_Normal_Back",
+            "Action_Tower_Normal_Result_Keepalive"
+        ]
+    },
+    "Action_Tower_Normal_Result_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Tower_Normal_Result"
+    },
+    "Check_Tower_Normal_Reward": {
+        "recognition": "OCR",
+        "expected": "恭喜获得",
+        "roi": [
+            245,
+            249,
+            224,
+            63
+        ],
+        "action": "Click",
+        "target": [
+            298,
+            844,
+            108,
+            46
+        ],
+        "post_delay": 800,
+        "next": "Check_Tower_Normal_Back"
+    },
+    "Check_Tower_Normal_Back": {
+        "recognition": "OCR",
+        "expected": "挂机收益",
+        "roi": [
+            216,
+            186,
+            296,
+            75
+        ],
+        "action": "DoNothing",
+        "next": "Step_Tower_Fast"
+    },
+    "Loop_Tower_Fast_Decide": {
+        "next": [
+            "Check_Tower_Fast_Count_0",
+            "Check_Tower_Fast_Count_1",
+            "Step_Tower_Finish"
+        ]
+    },
+    "Check_Tower_Fast_Count_0": {
+        "recognition": "OCR",
+        "expected": "0",
+        "roi": [
+            269,
+            1018,
+            27,
+            31
+        ],
+        "action": "DoNothing",
+        "next": "Step_Tower_Finish"
+    },
+    "Check_Tower_Fast_Count_1": {
+        "recognition": "OCR",
+        "expected": "1",
+        "roi": [
+            269,
+            1018,
+            27,
+            31
+        ],
+        "action": "Click",
+        "target": [
+            131,
+            1059,
+            144,
+            36
+        ],
+        "post_delay": 800,
+        "next": "Action_Tower_Fast_Confirm"
+    },
+    "Action_Tower_Fast_Confirm": {
+        "recognition": "OCR",
+        "expected": "快速收获",
+        "roi": [
+            461,
+            805,
+            118,
+            39
+        ],
+        "action": "Click",
+        "target": [
+            512,
+            817,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Tower_Fast_Result"
+    },
+    "Loop_Tower_Fast_Result": {
+        "next": [
+            "Check_Tower_Fast_Reward",
+            "Check_Tower_Fast_Back",
+            "Action_Tower_Fast_Result_Keepalive"
+        ]
+    },
+    "Action_Tower_Fast_Result_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Tower_Fast_Result"
+    },
+    "Check_Tower_Fast_Reward": {
+        "recognition": "OCR",
+        "expected": "恭喜获得",
+        "roi": [
+            245,
+            249,
+            224,
+            63
+        ],
+        "action": "Click",
+        "target": [
+            298,
+            844,
+            108,
+            46
+        ],
+        "post_delay": 800,
+        "next": "Check_Tower_Fast_Back"
+    },
+    "Check_Tower_Fast_Back": {
+        "recognition": "OCR",
+        "expected": "挂机收益",
+        "roi": [
+            216,
+            186,
+            296,
+            75
+        ],
+        "action": "DoNothing",
+        "next": "Step_Tower_Finish"
+    },
+    "Step_Tower_Finish": {
+        "recognition": "OCR",
+        "expected": "挂机收益",
+        "roi": [
+            216,
+            186,
+            296,
+            75
+        ],
+        "action": "Click",
+        "target": [
+            316,
+            1220,
+            94,
+            39
+        ],
+        "post_delay": 1000,
+        "next": "Step_Tower_Back_Main"
+    },
+    "Step_Tower_Back_Main": {
+        "recognition": "OCR",
+        "expected": "古代宝库之塔",
+        "roi": [
+            187,
+            53,
+            196,
+            53
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Tower_Back_Main_Arrow"
+    },
+    "Loop_Tower_Back_Main_Arrow": {
+        "next": [
+            "Check_Tower_Back_Main_Success",
+            "Action_Tower_Click_Left_Arrow_Blind"
+        ]
+    },
+    "Check_Tower_Back_Main_Success": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "DoNothing",
+        "next": "Step_Knight_Entry"
+    },
+    "Action_Tower_Click_Left_Arrow_Blind": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            42,
+            1206,
+            77,
+            48
+        ],
+        "post_delay": 800,
+        "next": "Loop_Tower_Back_Main_Arrow"
+    },
+    "Step_Knight_Entry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Knight_Entry_Start"
+    },
+    "Loop_Knight_Entry_Start": {
+        "next": [
+            "Check_Knight_Home_Page",
+            "Action_Knight_Click_Entry",
+            "Action_Knight_Entry_Keepalive"
+        ]
+    },
+    "Check_Knight_Home_Page": {
+        "recognition": "OCR",
+        "expected": "骑士团",
+        "roi": [
+            80,
+            229,
+            79,
+            44
+        ],
+        "action": "DoNothing",
+        "next": "Step_Knight_Donate"
+    },
+    "Action_Knight_Click_Entry": {
+        "recognition": "OCR",
+        "expected": "骑士团",
+        "roi": [
+            498,
+            1219,
+            81,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            531,
+            1232,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Knight_Entry_Start"
+    },
+    "Action_Knight_Entry_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            605,
+            816,
+            36,
+            51
+        ],
+        "post_delay": 300,
+        "next": "Loop_Knight_Entry_Start"
+    },
+    "Step_Knight_Donate": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Knight_Donate_Entry"
+    },
+    "Loop_Knight_Donate_Entry": {
+        "next": [
+            "Check_Knight_Donate_Page",
+            "Action_Knight_Open_Member_Tab",
+            "Action_Knight_Donate_Entry_Keepalive"
+        ]
+    },
+    "Action_Knight_Open_Member_Tab": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            151,
+            95,
+            55,
+            18
+        ],
+        "post_delay": 800,
+        "next": "Loop_Knight_Donate_Entry"
+    },
+    "Action_Knight_Donate_Entry_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            605,
+            816,
+            36,
+            51
+        ],
+        "post_delay": 300,
+        "next": "Loop_Knight_Donate_Entry"
+    },
+    "Check_Knight_Donate_Page": {
+        "recognition": "OCR",
+        "expected": "捐献",
+        "roi": [
+            567,
+            238,
+            73,
+            45
+        ],
+        "action": "Click",
+        "target": [
+            596,
+            253,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Knight_Donate_Click"
+    },
+    "Loop_Knight_Donate_Click": {
+        "next": [
+            "Check_Knight_Donate_Done",
+            "Action_Knight_Donate_Once"
+        ]
+    },
+    "Action_Knight_Donate_Once": {
+        "recognition": "OCR",
+        "expected": "捐献",
+        "roi": [
+            379,
+            901,
+            71,
+            38
+        ],
+        "action": "Click",
+        "target": [
+            407,
+            912,
+            15,
+            15
+        ],
+        "post_delay": 300,
+        "next": "Loop_Knight_Donate_Click"
+    },
+    "Check_Knight_Donate_Done": {
+        "recognition": "OCR",
+        "expected": "已贡献10次",
+        "roi": [
+            290,
+            901,
+            154,
+            39
+        ],
+        "action": "DoNothing",
+        "next": "Action_Knight_Back_From_Donate"
+    },
+    "Action_Knight_Back_From_Donate": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            37,
+            1218,
+            74,
+            46
+        ],
+        "post_delay": 800,
+        "next": "Action_Knight_Back_To_Home"
+    },
+    "Action_Knight_Back_To_Home": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            37,
+            1218,
+            74,
+            46
+        ],
+        "post_delay": 800,
+        "next": "Step_Knight_Buff"
+    },
+    "Step_Knight_Dig": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Step_Knight_Buff"
+    },
+    "Step_Knight_Buff": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Knight_Buff_Entry"
+    },
+    "Loop_Knight_Buff_Entry": {
+        "next": [
+            "Check_Knight_Buff_Page",
+            "Action_Knight_Open_Buff",
+            "Action_Knight_Buff_Entry_Keepalive"
+        ]
+    },
+    "Check_Knight_Buff_Page": {
+        "recognition": "OCR",
+        "expected": "骑|士|团|增|益",
+        "roi": [
+            8,
+            0,
+            236,
+            61
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Knight_Buff_Activate"
+    },
+    "Action_Knight_Open_Buff": {
+        "recognition": "OCR",
+        "expected": "增|益",
+        "roi": [
+            19,
+            1029,
+            65,
+            39
+        ],
+        "action": "Click",
+        "target": [
+            52,
+            1049,
+            1,
+            1
+        ],
+        "post_delay": 800,
+        "next": "Loop_Knight_Buff_Entry"
+    },
+    "Action_Knight_Buff_Entry_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            605,
+            816,
+            36,
+            51
+        ],
+        "post_delay": 300,
+        "next": "Loop_Knight_Buff_Entry"
+    },
+    "Loop_Knight_Buff_Activate": {
+        "next": [
+            "Action_Knight_Buff_Activate_1",
+            "Action_Knight_Buff_Activate_2",
+            "Action_Knight_Buff_Activate_3",
+            "Action_Knight_Buff_Back_To_Home"
+        ]
+    },
+    "Action_Knight_Buff_Activate_1": {
+        "recognition": "OCR",
+        "expected": "激活",
+        "roi": [
+            551,
+            299,
+            79,
+            38
+        ],
+        "action": "Click",
+        "target": [
+            583,
+            310,
+            15,
+            15
+        ],
+        "post_delay": 400,
+        "next": "Action_Knight_Buff_Confirm"
+    },
+    "Action_Knight_Buff_Activate_2": {
+        "recognition": "OCR",
+        "expected": "激活",
+        "roi": [
+            551,
+            541,
+            75,
+            39
+        ],
+        "action": "Click",
+        "target": [
+            581,
+            553,
+            15,
+            15
+        ],
+        "post_delay": 400,
+        "next": "Action_Knight_Buff_Confirm"
+    },
+    "Action_Knight_Buff_Activate_3": {
+        "recognition": "OCR",
+        "expected": "激活",
+        "roi": [
+            551,
+            780,
+            83,
+            38
+        ],
+        "action": "Click",
+        "target": [
+            585,
+            791,
+            15,
+            15
+        ],
+        "post_delay": 400,
+        "next": "Action_Knight_Buff_Confirm"
+    },
+    "Action_Knight_Buff_Confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            478,
+            826,
+            69,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            505,
+            839,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Knight_Buff_Entry"
+    },
+    "Action_Knight_Buff_Back_To_Home": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            37,
+            1218,
+            74,
+            46
+        ],
+        "post_delay": 800,
+        "next": "Loop_Knight_Return_Lobby"
+    },
+    "Loop_Knight_Return_Lobby": {
+        "next": [
+            "Check_Knight_Lobby_Ready",
+            "Action_Knight_Return_Lobby",
+            "Action_Knight_Return_Keepalive"
+        ]
+    },
+    "Check_Knight_Lobby_Ready": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "DoNothing",
+        "next": "Step_Knight_Shop_Entry"
+    },
+    "Action_Knight_Return_Lobby": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [
+            48,
+            1193,
+            66,
+            34
+        ],
+        "action": "Click",
+        "target": [
+            73,
+            1202,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Knight_Return_Lobby"
+    },
+    "Action_Knight_Return_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Knight_Return_Lobby"
+    },
+    "Step_Knight_Shop_Entry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Shop_Open_Menu"
+    },
+    "Loop_Shop_Open_Menu": {
+        "next": [
+            "Check_Shop_Menu_Page_Open",
+            "Action_Shop_Click_Menu",
+            "Action_Shop_Open_Menu_Keepalive"
+        ]
+    },
+    "Check_Shop_Menu_Page_Open": {
+        "recognition": "OCR",
+        "expected": "菜单",
+        "roi": [
+            34,
+            322,
+            188,
+            160
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Shop_Open_Page"
+    },
+    "Action_Shop_Click_Menu": {
+        "recognition": "OCR",
+        "expected": "菜单",
+        "roi": [
+            586,
+            1179,
+            134,
+            101
+        ],
+        "action": "Click",
+        "target": [
+            645,
+            1222,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Open_Menu"
+    },
+    "Action_Shop_Open_Menu_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Open_Menu"
+    },
+    "Loop_Shop_Open_Page": {
+        "next": [
+            "Check_Shop_Page",
+            "Action_Shop_Click_Shop",
+            "Action_Shop_Open_Page_Keepalive"
+        ]
+    },
+    "Check_Shop_Page": {
+        "recognition": "OCR",
+        "expected": "商店",
+        "roi": [
+            43,
+            0,
+            175,
+            150
+        ],
+        "action": "DoNothing",
+        "next": "Step_Knight_Shop_Stone"
+    },
+    "Action_Shop_Click_Shop": {
+        "recognition": "OCR",
+        "expected": "商|店",
+        "roi": [
+            553,
+            693,
+            167,
+            186
+        ],
+        "action": "Click",
+        "target": [
+            629,
+            778,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Open_Page"
+    },
+    "Action_Shop_Open_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Open_Page"
+    },
+    "Step_Knight_Shop_Stone": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Shop_Stone"
+    },
+    "Loop_Shop_Stone": {
+        "next": [
+            "Check_Shop_Stone_Reward",
+            "Action_Shop_Buy_Stone",
+            "Action_Shop_Stone_MaxHit_Fallback"
+        ]
+    },
+    "Action_Shop_Buy_Stone": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            630,
+            445,
+            35,
+            33
+        ],
+        "max_hit": 10,
+        "post_delay": 800,
+        "next": "Loop_Shop_Stone"
+    },
+    "Action_Shop_Stone_MaxHit_Fallback": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Step_Knight_Shop_Book"
+    },
+    "Check_Shop_Stone_Reward": {
+        "recognition": "OCR",
+        "expected": "恭喜获得",
+        "roi": [
+            189,
+            193,
+            333,
+            175
+        ],
+        "action": "Click",
+        "target": [
+            322,
+            941,
+            85,
+            35
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Stone_Back"
+    },
+    "Loop_Shop_Stone_Back": {
+        "next": [
+            "Check_Shop_Stone_Back",
+            "Action_Shop_Stone_Back_Keepalive"
+        ]
+    },
+    "Check_Shop_Stone_Back": {
+        "recognition": "OCR",
+        "expected": "商店",
+        "roi": [
+            43,
+            0,
+            175,
+            150
+        ],
+        "action": "DoNothing",
+        "next": "Step_Knight_Shop_Book"
+    },
+    "Action_Shop_Stone_Back_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Stone_Back"
+    },
+    "Step_Knight_Shop_Book": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Shop_Book_Scroll"
+    },
+    "Loop_Shop_Book_Scroll": {
+        "next": [
+            "Check_Shop_Guild_Button",
+            "Action_Shop_Book_Swipe",
+            "Action_Shop_Book_Scroll_Keepalive"
+        ]
+    },
+    "Check_Shop_Guild_Button": {
+        "recognition": "OCR",
+        "expected": "公会商店",
+        "roi": [
+            0,
+            693,
+            207,
+            157
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            713,
+            73,
+            59
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Guild_Page"
+    },
+    "Action_Shop_Book_Swipe": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            53,
+            1110,
+            1,
+            1
+        ],
+        "end": [
+            53,
+            76,
+            1,
+            1
+        ],
+        "duration": 500,
+        "post_delay": 800,
+        "next": "Loop_Shop_Book_Scroll"
+    },
+    "Action_Shop_Book_Scroll_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Book_Scroll"
+    },
+    "Loop_Shop_Guild_Page": {
+        "next": [
+            "Check_Shop_Guild_Page",
+            "Check_Shop_Guild_Button",
+            "Action_Shop_Guild_Page_Keepalive"
+        ]
+    },
+    "Check_Shop_Guild_Page": {
+        "recognition": "OCR",
+        "expected": "公会商店",
+        "roi": [
+            316,
+            472,
+            203,
+            138
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Shop_Book_Buy"
+    },
+    "Action_Shop_Guild_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Guild_Page"
+    },
+    "Loop_Shop_Book_Buy": {
+        "next": [
+            "Check_Shop_Book_Item",
+            "Action_Shop_Book_Finish"
+        ]
+    },
+    "Check_Shop_Book_Item": {
+        "recognition": "OCR",
+        "expected": "星间通信书",
+        "roi": [
+            120,
+            523,
+            228,
+            140
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Shop_Book_Daily"
+    },
+    "Loop_Shop_Book_Daily": {
+        "next": [
+            "Check_Shop_Book_Daily",
+            "Action_Shop_Book_Finish"
+        ]
+    },
+    "Check_Shop_Book_Daily": {
+        "recognition": "OCR",
+        "expected": "每日",
+        "roi": [
+            139,
+            760,
+            148,
+            138
+        ],
+        "action": "Click",
+        "target": [
+            197,
+            765,
+            88,
+            21
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Book_Confirm"
+    },
+    "Action_Shop_Book_Finish": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Shop_Back_Menu"
+    },
+    "Loop_Shop_Book_Confirm": {
+        "next": [
+            "Check_Shop_Book_Confirm_Page",
+            "Check_Shop_Guild_Page",
+            "Action_Shop_Book_Confirm_Keepalive"
+        ]
+    },
+    "Check_Shop_Book_Confirm_Page": {
+        "recognition": "OCR",
+        "expected": "购买确认",
+        "roi": [
+            252,
+            270,
+            219,
+            143
+        ],
+        "action": "Click",
+        "target": [
+            460,
+            738,
+            116,
+            37
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Book_Reward"
+    },
+    "Action_Shop_Book_Confirm_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Book_Confirm"
+    },
+    "Loop_Shop_Book_Reward": {
+        "next": [
+            "Check_Shop_Book_Reward",
+            "Action_Shop_Book_Reward_Keepalive"
+        ]
+    },
+    "Check_Shop_Book_Reward": {
+        "recognition": "OCR",
+        "expected": "恭喜获得",
+        "roi": [
+            196,
+            197,
+            322,
+            171
+        ],
+        "action": "Click",
+        "target": [
+            321,
+            941,
+            85,
+            39
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Book_Return_Guild"
+    },
+    "Action_Shop_Book_Reward_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Book_Reward"
+    },
+    "Loop_Shop_Book_Return_Guild": {
+        "next": [
+            "Check_Shop_Guild_Page",
+            "Action_Shop_Book_Return_Keepalive"
+        ]
+    },
+    "Action_Shop_Book_Return_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Book_Return_Guild"
+    },
+    "Loop_Shop_Back_Menu": {
+        "next": [
+            "Check_Shop_Menu_Page_Back",
+            "Action_Shop_Back_Menu_Arrow",
+            "Action_Shop_Back_Menu_Keepalive"
+        ]
+    },
+    "Check_Shop_Menu_Page_Back": {
+        "recognition": "OCR",
+        "expected": "菜单",
+        "roi": [
+            34,
+            322,
+            188,
+            160
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Shop_Back_Lobby"
+    },
+    "Action_Shop_Back_Menu_Arrow": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            22,
+            1220,
+            72,
+            32
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Back_Menu"
+    },
+    "Action_Shop_Back_Menu_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Back_Menu"
+    },
+    "Loop_Shop_Back_Lobby": {
+        "next": [
+            "Check_Shop_Back_Lobby_Success",
+            "Action_Shop_Back_Lobby_Arrow",
+            "Action_Shop_Back_Lobby_Keepalive"
+        ]
+    },
+    "Check_Shop_Back_Lobby_Success": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "DoNothing",
+        "next": "Step_Dungeon_Entry"
+    },
+    "Action_Shop_Back_Lobby_Arrow": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            34,
+            1224,
+            83,
+            34
+        ],
+        "post_delay": 800,
+        "next": "Loop_Shop_Back_Lobby"
+    },
+    "Action_Shop_Back_Lobby_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Shop_Back_Lobby"
+    },
+    "Step_Dungeon_Entry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Step_Dungeon_Gold"
+    },
+    "Step_Dungeon_Gold": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Gold_Open_Page"
+    },
+    "Loop_Dungeon_Gold_Open_Page": {
+        "next": [
+            "Check_Dungeon_Gold_Page",
+            "Action_Dungeon_Gold_Click_Entry",
+            "Action_Dungeon_Gold_Open_Page_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Page": {
+        "recognition": "OCR",
+        "expected": "切换系列",
+        "roi": [
+            569,
+            223,
+            151,
+            141
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Gold_Scroll"
+    },
+    "Action_Dungeon_Gold_Click_Entry": {
+        "recognition": "OCR",
+        "expected": "副本",
+        "roi": [
+            235,
+            1176,
+            149,
+            104
+        ],
+        "action": "Click",
+        "target": [
+            302,
+            1220,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Open_Page"
+    },
+    "Action_Dungeon_Gold_Open_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Open_Page"
+    },
+    "Loop_Dungeon_Gold_Scroll": {
+        "next": [
+            "Check_Dungeon_Gold_Boss",
+            "Action_Dungeon_Gold_Swipe",
+            "Action_Dungeon_Gold_Scroll_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Boss": {
+        "recognition": "OCR",
+        "expected": "艾莉瑞尔",
+        "roi": [
+            235,
+            924,
+            286,
+            148
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Gold_Count"
+    },
+    "Action_Dungeon_Gold_Swipe": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            43,
+            1069,
+            1,
+            1
+        ],
+        "end": [
+            43,
+            327,
+            1,
+            1
+        ],
+        "duration": 500,
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Scroll"
+    },
+    "Action_Dungeon_Gold_Scroll_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Scroll"
+    },
+    "Loop_Dungeon_Gold_Count": {
+        "next": [
+            "Check_Dungeon_Gold_Count_Ready",
+            "Action_Dungeon_Gold_Count_Finish"
+        ]
+    },
+    "Check_Dungeon_Gold_Count_Ready": {
+        "recognition": "OCR",
+        "expected": "1/1|1/2|2/2",
+        "roi": [
+            587,
+            943,
+            133,
+            126
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Gold_Open_Room"
+    },
+    "Action_Dungeon_Gold_Count_Finish": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Step_Dungeon_Black"
+    },
+    "Loop_Dungeon_Gold_Open_Room": {
+        "next": [
+            "Check_Dungeon_Gold_Create_Room",
+            "Action_Dungeon_Gold_Click_SubEntry",
+            "Action_Dungeon_Gold_Open_Room_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Create_Room": {
+        "recognition": "OCR",
+        "expected": "创建房间",
+        "roi": [
+            398,
+            989,
+            227,
+            134
+        ],
+        "action": "Click",
+        "target": [
+            448,
+            1035,
+            132,
+            35
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Support_Page"
+    },
+    "Action_Dungeon_Gold_Click_SubEntry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            627,
+            1039,
+            15,
+            10
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Open_Room"
+    },
+    "Action_Dungeon_Gold_Open_Room_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Open_Room"
+    },
+    "Loop_Dungeon_Gold_Support_Page": {
+        "next": [
+            "Check_Dungeon_Gold_Support_Page",
+            "Action_Dungeon_Gold_Support_Page_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Support_Page": {
+        "recognition": "OCR",
+        "expected": "助战选择",
+        "roi": [
+            285,
+            220,
+            165,
+            60
+        ],
+        "action": "DoNothing",
+        "next": "Action_Dungeon_Gold_Select_Element"
+    },
+    "Action_Dungeon_Gold_Select_Element": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            100,
+            300,
+            50,
+            40
+        ],
+        "post_delay": 1500,
+        "next": "Loop_Dungeon_Gold_Support_Target"
+    },
+    "Action_Dungeon_Gold_Support_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Support_Page"
+    },
+    "Loop_Dungeon_Gold_Support_Target": {
+        "next": [
+            "Action_Dungeon_Gold_Case_Found_Target",
+            "Action_Dungeon_Gold_Case_Not_Found"
+        ]
+    },
+    "Action_Dungeon_Gold_Case_Found_Target": {
+        "recognition": "OCR",
+        "expected": "巴哈",
+        "roi": [
+            355,
+            450,
+            205,
+            435
+        ],
+        "action": "Click",
+        "target": [
+            450,
+            660,
+            15,
+            15
+        ],
+        "next": "Loop_Dungeon_Gold_Confirm_Team"
+    },
+    "Action_Dungeon_Gold_Case_Not_Found": {
+        "recognition": "OCR",
+        "expected": "巴哈",
+        "roi": [
+            355,
+            450,
+            205,
+            435
+        ],
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            352,
+            492,
+            50,
+            50
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Confirm_Team"
+    },
+    "Loop_Dungeon_Gold_Confirm_Team": {
+        "next": [
+            "Check_Dungeon_Gold_Confirm_Team",
+            "Action_Dungeon_Gold_Confirm_Team_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Confirm_Team": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            272,
+            980,
+            180,
+            137
+        ],
+        "action": "Click",
+        "target": [
+            327,
+            1030,
+            67,
+            34
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Gold_Start_Battle"
+    },
+    "Action_Dungeon_Gold_Confirm_Team_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Confirm_Team"
+    },
+    "Loop_Dungeon_Gold_Start_Battle": {
+        "next": [
+            "Check_Dungeon_Gold_Start_Battle",
+            "Action_Dungeon_Gold_Start_Battle_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Start_Battle": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "roi": [
+            424,
+            1147,
+            237,
+            133
+        ],
+        "action": "Click",
+        "target": [
+            483,
+            1211,
+            120,
+            25
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Start_Confirm"
+    },
+    "Action_Dungeon_Gold_Start_Battle_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Start_Battle"
+    },
+    "Loop_Dungeon_Gold_Start_Confirm": {
+        "next": [
+            "Check_Dungeon_Gold_Start_Confirm",
+            "Action_Dungeon_Gold_Start_Confirm_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Start_Confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            432,
+            787,
+            167,
+            137
+        ],
+        "action": "Click",
+        "target": [
+            470,
+            842,
+            84,
+            27
+        ],
+        "post_delay": 3000,
+        "next": "Loop_Dungeon_Gold_Defeat"
+    },
+    "Action_Dungeon_Gold_Start_Confirm_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Start_Confirm"
+    },
+    "Loop_Dungeon_Gold_Defeat": {
+        "next": [
+            "Check_Dungeon_Gold_State_Battle",
+            "Check_Dungeon_Gold_Defeat_Revive",
+            "Check_Dungeon_Gold_Defeat_Support_Page",
+            "Check_Dungeon_Gold_Defeat_Result",
+            "Action_Dungeon_Gold_Defeat_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_State_Battle": {
+        "recognition": "OCR",
+        "expected": "菜单",
+        "roi": [
+            648,
+            721,
+            58,
+            32
+        ],
+        "action": "DoNothing",
+        "next": "Module_Dungeon_Gold_Battle"
+    },
+    "Module_Dungeon_Gold_Battle": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Dungeon_Gold_Skip_Found",
+            "Case_Dungeon_Gold_Skip_Not_Found"
+        ]
+    },
+    "Case_Dungeon_Gold_Skip_Found": {
+        "recognition": "OCR",
+        "expected": "跳过",
+        "roi": [
+            300,
+            1080,
+            150,
+            60
+        ],
+        "action": "Click",
+        "target": [
+            367,
+            1102,
+            15,
+            15
+        ],
+        "next": "Loop_Dungeon_Gold_Defeat"
+    },
+    "Case_Dungeon_Gold_Skip_Not_Found": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Gold_Defeat"
+    },
+    "Check_Dungeon_Gold_Defeat_Revive": {
+        "recognition": "OCR",
+        "expected": "复活",
+        "roi": [
+            450,
+            406,
+            80,
+            49
+        ],
+        "action": "DoNothing",
+        "next": "Action_Dungeon_Gold_Defeat_Revive_Choice"
+    },
+    "Action_Dungeon_Gold_Defeat_Revive_Choice": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            143,
+            785,
+            105,
+            41
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Defeat"
+    },
+    "Check_Dungeon_Gold_Defeat_Support_Page": {
+        "recognition": "OCR",
+        "expected": "呼叫支援",
+        "roi": [
+            239,
+            168,
+            245,
+            153
+        ],
+        "action": "Click",
+        "target": [
+            279,
+            893,
+            161,
+            135
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Defeat"
+    },
+    "Check_Dungeon_Gold_Defeat_Result": {
+        "recognition": "OCR",
+        "expected": "已战败",
+        "roi": [
+            287,
+            402,
+            141,
+            51
+        ],
+        "action": "Click",
+        "target": [
+            463,
+            782,
+            124,
+            49
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Leave_Room"
+    },
+    "Action_Dungeon_Gold_Defeat_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Defeat"
+    },
+    "Loop_Dungeon_Gold_Leave_Room": {
+        "next": [
+            "Check_Dungeon_Gold_Return_Battle",
+            "Action_Dungeon_Gold_Leave_Room_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Return_Battle": {
+        "recognition": "OCR",
+        "expected": "返回战斗",
+        "roi": [
+            419,
+            1156,
+            237,
+            124
+        ],
+        "action": "Click",
+        "target": [
+            48,
+            1215,
+            56,
+            36
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Gold_Exit_Confirm"
+    },
+    "Action_Dungeon_Gold_Leave_Room_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Leave_Room"
+    },
+    "Loop_Dungeon_Gold_Exit_Confirm": {
+        "next": [
+            "Check_Dungeon_Gold_Exit_Confirm",
+            "Action_Dungeon_Gold_Exit_Confirm_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Exit_Confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            429,
+            792,
+            169,
+            131
+        ],
+        "action": "Click",
+        "target": [
+            506,
+            850,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Gold_Back_Lobby"
+    },
+    "Action_Dungeon_Gold_Exit_Confirm_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Exit_Confirm"
+    },
+    "Loop_Dungeon_Gold_Back_Lobby": {
+        "next": [
+            "Check_Dungeon_Gold_Back_Lobby",
+            "Action_Dungeon_Gold_Back_Lobby_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Gold_Back_Lobby": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "DoNothing",
+        "next": "Step_Dungeon_Black"
+    },
+    "Action_Dungeon_Gold_Back_Lobby_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Gold_Back_Lobby"
+    },
+    "Step_Dungeon_Black": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Open_Page"
+    },
+    "Loop_Dungeon_Black_Open_Page": {
+        "next": [
+            "Check_Dungeon_Black_Page",
+            "Action_Dungeon_Black_Click_Entry",
+            "Action_Dungeon_Black_Open_Page_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Page": {
+        "recognition": "OCR",
+        "expected": "切换系列",
+        "roi": [
+            569,
+            223,
+            151,
+            141
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Select_Series"
+    },
+    "Action_Dungeon_Black_Click_Entry": {
+        "recognition": "OCR",
+        "expected": "副本",
+        "roi": [
+            235,
+            1176,
+            149,
+            104
+        ],
+        "action": "Click",
+        "target": [
+            302,
+            1220,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Open_Page"
+    },
+    "Action_Dungeon_Black_Open_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Open_Page"
+    },
+    "Loop_Dungeon_Black_Select_Series": {
+        "next": [
+            "Check_Dungeon_Black_Beast_Ready",
+            "Check_Dungeon_Black_Beast_Entry",
+            "Action_Dungeon_Black_Click_Series",
+            "Action_Dungeon_Black_Select_Series_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Beast_Ready": {
+        "recognition": "OCR",
+        "expected": "苏尔特尔",
+        "roi": [
+            228,
+            376,
+            221,
+            139
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Scroll"
+    },
+    "Check_Dungeon_Black_Beast_Entry": {
+        "recognition": "OCR",
+        "expected": "始源巨兽",
+        "roi": [
+            303,
+            426,
+            256,
+            181
+        ],
+        "action": "Click",
+        "target": [
+            423,
+            509,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Select_Series"
+    },
+    "Action_Dungeon_Black_Click_Series": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            651,
+            275,
+            28,
+            28
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Select_Series"
+    },
+    "Action_Dungeon_Black_Select_Series_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Select_Series"
+    },
+    "Loop_Dungeon_Black_Scroll": {
+        "next": [
+            "Check_Dungeon_Black_Boss",
+            "Action_Dungeon_Black_Swipe",
+            "Action_Dungeon_Black_Scroll_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Boss": {
+        "recognition": "OCR",
+        "expected": "诺维克的幻影",
+        "roi": [
+            228,
+            924,
+            278,
+            143
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Open_Room"
+    },
+    "Action_Dungeon_Black_Swipe": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            43,
+            1069,
+            1,
+            1
+        ],
+        "end": [
+            43,
+            327,
+            1,
+            1
+        ],
+        "duration": 500,
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Scroll"
+    },
+    "Action_Dungeon_Black_Scroll_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Scroll"
+    },
+    "Loop_Dungeon_Black_Open_Room": {
+        "next": [
+            "Check_Dungeon_Black_Create_Room_Page",
+            "Action_Dungeon_Black_Click_SubEntry",
+            "Action_Dungeon_Black_Open_Room_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Create_Room_Page": {
+        "recognition": "OCR",
+        "expected": "创建房间",
+        "roi": [
+            398,
+            989,
+            227,
+            134
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Select_Copy"
+    },
+    "Action_Dungeon_Black_Click_SubEntry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            627,
+            1039,
+            15,
+            10
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Open_Room"
+    },
+    "Action_Dungeon_Black_Open_Room_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Open_Room"
+    },
+    "Loop_Dungeon_Black_Select_Copy": {
+        "next": [
+            "Check_Dungeon_Black_Copy_Selected",
+            "Action_Dungeon_Black_Click_Copy",
+            "Action_Dungeon_Black_Select_Copy_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Copy_Selected": {
+        "recognition": "ColorMatch",
+        "roi": [
+            348,
+            218,
+            14,
+            10
+        ],
+        "lower": [
+            50,
+            105,
+            128
+        ],
+        "upper": [
+            55,
+            120,
+            141
+        ],
+        "count": 1,
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Count"
+    },
+    "Action_Dungeon_Black_Click_Copy": {
+        "recognition": "ColorMatch",
+        "roi": [
+            374,
+            213,
+            23,
+            19
+        ],
+        "lower": [
+            31,
+            39,
+            50
+        ],
+        "upper": [
+            33,
+            39,
+            54
+        ],
+        "count": 1,
+        "action": "Click",
+        "target": [
+            378,
+            215,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Select_Copy"
+    },
+    "Action_Dungeon_Black_Select_Copy_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Select_Copy"
+    },
+    "Loop_Dungeon_Black_Count": {
+        "next": [
+            "Check_Dungeon_Black_Count_Ready",
+            "Action_Dungeon_Black_Count_Finish"
+        ]
+    },
+    "Check_Dungeon_Black_Count_Ready": {
+        "recognition": "OCR",
+        "expected": "1/1|1/2|2/2",
+        "roi": [
+            201,
+            486,
+            143,
+            126
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Create_Room"
+    },
+    "Action_Dungeon_Black_Count_Finish": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            54,
+            1228,
+            52,
+            46
+        ],
+        "post_delay": 800,
+        "next": "Step_Daily_Quest"
+    },
+    "Loop_Dungeon_Black_Create_Room": {
+        "next": [
+            "Check_Dungeon_Black_Create_Room",
+            "Action_Dungeon_Black_Create_Room_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Create_Room": {
+        "recognition": "OCR",
+        "expected": "创建房间",
+        "roi": [
+            398,
+            989,
+            227,
+            134
+        ],
+        "action": "Click",
+        "target": [
+            504,
+            1048,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Support_Page"
+    },
+    "Action_Dungeon_Black_Create_Room_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Create_Room"
+    },
+    "Loop_Dungeon_Black_Support_Page": {
+        "next": [
+            "Check_Dungeon_Black_Support_Page",
+            "Action_Dungeon_Black_Support_Page_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Support_Page": {
+        "recognition": "OCR",
+        "expected": "助战选择",
+        "roi": [
+            285,
+            220,
+            165,
+            60
+        ],
+        "action": "DoNothing",
+        "next": "Action_Dungeon_Black_Select_Element"
+    },
+    "Action_Dungeon_Black_Select_Element": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            100,
+            300,
+            50,
+            40
+        ],
+        "post_delay": 1500,
+        "next": "Loop_Dungeon_Black_Support_Target"
+    },
+    "Action_Dungeon_Black_Support_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Support_Page"
+    },
+    "Loop_Dungeon_Black_Support_Target": {
+        "next": [
+            "Action_Dungeon_Black_Case_Found_Target",
+            "Action_Dungeon_Black_Case_Not_Found"
+        ]
+    },
+    "Action_Dungeon_Black_Case_Found_Target": {
+        "recognition": "OCR",
+        "expected": "巴哈",
+        "roi": [
+            355,
+            450,
+            205,
+            435
+        ],
+        "action": "Click",
+        "target": [
+            450,
+            660,
+            15,
+            15
+        ],
+        "next": "Loop_Dungeon_Black_Confirm_Team"
+    },
+    "Action_Dungeon_Black_Case_Not_Found": {
+        "recognition": "OCR",
+        "expected": "巴哈",
+        "roi": [
+            355,
+            450,
+            205,
+            435
+        ],
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            352,
+            492,
+            50,
+            50
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Confirm_Team"
+    },
+    "Loop_Dungeon_Black_Confirm_Team": {
+        "next": [
+            "Check_Dungeon_Black_Confirm_Team",
+            "Action_Dungeon_Black_Confirm_Team_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Confirm_Team": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            272,
+            980,
+            180,
+            137
+        ],
+        "action": "Click",
+        "target": [
+            354,
+            1041,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Black_Start_Battle"
+    },
+    "Action_Dungeon_Black_Confirm_Team_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Confirm_Team"
+    },
+    "Loop_Dungeon_Black_Start_Battle": {
+        "next": [
+            "Check_Dungeon_Black_Start_Battle",
+            "Action_Dungeon_Black_Start_Battle_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Start_Battle": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "roi": [
+            424,
+            1147,
+            237,
+            133
+        ],
+        "action": "Click",
+        "target": [
+            534,
+            1206,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Start_Confirm"
+    },
+    "Action_Dungeon_Black_Start_Battle_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Start_Battle"
+    },
+    "Loop_Dungeon_Black_Start_Confirm": {
+        "next": [
+            "Check_Dungeon_Black_Start_Confirm",
+            "Action_Dungeon_Black_Start_Confirm_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Start_Confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            432,
+            787,
+            167,
+            137
+        ],
+        "action": "Click",
+        "target": [
+            508,
+            848,
+            15,
+            15
+        ],
+        "post_delay": 3000,
+        "next": "Loop_Dungeon_Black_Support_Once"
+    },
+    "Action_Dungeon_Black_Start_Confirm_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Start_Confirm"
+    },
+    "Loop_Dungeon_Black_Combat": {
+        "next": [
+            "Check_Dungeon_Black_Back_Lobby",
+            "Check_Dungeon_Black_State_Battle",
+            "Check_Dungeon_Black_Defeat_Revive",
+            "Check_Dungeon_Black_Defeat_Support_Page",
+            "Check_Dungeon_Black_Defeat_Result",
+            "Check_Dungeon_Black_Settlement",
+            "Action_Dungeon_Black_Combat_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_State_Battle": {
+        "recognition": "OCR",
+        "expected": "菜单",
+        "roi": [
+            648,
+            721,
+            58,
+            32
+        ],
+        "action": "DoNothing",
+        "next": "Module_Dungeon_Black_Battle"
+    },
+    "Module_Dungeon_Black_Battle": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "Case_Dungeon_Black_Skip_Found",
+            "Case_Dungeon_Black_Skip_Not_Found"
+        ]
+    },
+    "Case_Dungeon_Black_Skip_Found": {
+        "recognition": "OCR",
+        "expected": "跳过",
+        "roi": [
+            300,
+            1080,
+            150,
+            60
+        ],
+        "action": "Click",
+        "target": [
+            367,
+            1102,
+            15,
+            15
+        ],
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Case_Dungeon_Black_Skip_Not_Found": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Loop_Dungeon_Black_Support_Once": {
+        "next": [
+            "Check_Dungeon_Black_Support_Page_In_Battle",
+            "Action_Dungeon_Black_Send_Support",
+            "Action_Dungeon_Black_Request_Support",
+            "Action_Dungeon_Black_Support_Skip_After_Once"
+        ]
+    },
+    "Check_Dungeon_Black_Support_Page_In_Battle": {
+        "recognition": "OCR",
+        "expected": "呼叫支援",
+        "roi": [
+            239,
+            168,
+            245,
+            153
+        ],
+        "action": "DoNothing",
+        "next": "Action_Dungeon_Black_Send_Support"
+    },
+    "Action_Dungeon_Black_Send_Support": {
+        "recognition": "OCR",
+        "expected": "发送",
+        "roi": [
+            279,
+            893,
+            161,
+            135
+        ],
+        "action": "Click",
+        "target": [
+            352,
+            953,
+            15,
+            15
+        ],
+        "max_hit": 1,
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Action_Dungeon_Black_Request_Support": {
+        "recognition": "OCR",
+        "expected": "发送多人支援请求",
+        "roi": [
+            4,
+            1199,
+            276,
+            81
+        ],
+        "action": "Click",
+        "target": [
+            84,
+            1270,
+            15,
+            5
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Support_Once"
+    },
+    "Action_Dungeon_Black_Support_Skip_After_Once": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Support_Once"
+    },
+    "Check_Dungeon_Black_Defeat_Revive": {
+        "recognition": "OCR",
+        "expected": "复活",
+        "roi": [
+            450,
+            406,
+            80,
+            49
+        ],
+        "action": "DoNothing",
+        "next": "Action_Dungeon_Black_Defeat_Revive_Choice"
+    },
+    "Check_Dungeon_Black_Defeat_Support_Page": {
+        "recognition": "OCR",
+        "expected": "呼叫支援",
+        "roi": [
+            239,
+            168,
+            245,
+            153
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Check_Dungeon_Black_Defeat_Result": {
+        "recognition": "OCR",
+        "expected": "已战败",
+        "roi": [
+            287,
+            402,
+            141,
+            51
+        ],
+        "action": "Click",
+        "target": [
+            517,
+            799,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Leave_Room"
+    },
+    "Check_Dungeon_Black_Settlement": {
+        "recognition": "OCR",
+        "expected": "数据",
+        "roi": [
+            591,
+            511,
+            76,
+            38
+        ],
+        "action": "Click",
+        "target": [
+            357,
+            1202,
+            15,
+            15
+        ],
+        "post_delay": 500,
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Action_Dungeon_Black_Combat_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Action_Dungeon_Black_Defeat_Revive_Choice": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            143,
+            785,
+            105,
+            41
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Loop_Dungeon_Black_Leave_Room": {
+        "next": [
+            "Check_Dungeon_Black_Return_Battle",
+            "Action_Dungeon_Black_Leave_Room_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Return_Battle": {
+        "recognition": "OCR",
+        "expected": "返回战斗",
+        "roi": [
+            419,
+            1156,
+            237,
+            124
+        ],
+        "action": "Click",
+        "target": [
+            48,
+            1215,
+            56,
+            36
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Exit_Confirm"
+    },
+    "Action_Dungeon_Black_Leave_Room_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Leave_Room"
+    },
+    "Loop_Dungeon_Black_Exit_Confirm": {
+        "next": [
+            "Check_Dungeon_Black_Exit_Confirm",
+            "Action_Dungeon_Black_Exit_Confirm_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Exit_Confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            429,
+            792,
+            169,
+            131
+        ],
+        "action": "Click",
+        "target": [
+            506,
+            850,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Black_Back_Lobby"
+    },
+    "Action_Dungeon_Black_Exit_Confirm_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Exit_Confirm"
+    },
+    "Loop_Dungeon_Black_Back_Lobby": {
+        "next": [
+            "Check_Dungeon_Black_Back_Lobby",
+            "Action_Dungeon_Black_Back_Lobby_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Back_Lobby": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "DoNothing",
+        "next": "Step_Daily_Quest"
+    },
+    "Action_Dungeon_Black_Back_Lobby_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Back_Lobby"
+    },
+    "Step_Daily_Quest": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Daily_Quest_Entry"
+    },
+    "Loop_Daily_Quest_Entry": {
+        "next": [
+            "Check_Daily_Quest_Page",
+            "Action_Daily_Quest_Click_Entry",
+            "Action_Daily_Quest_Entry_Keepalive"
+        ]
+    },
+    "Check_Daily_Quest_Page": {
+        "recognition": "OCR",
+        "expected": "每日任务",
+        "roi": [
+            294,
+            85,
+            376,
+            202
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Daily_Quest_Claim"
+    },
+    "Action_Daily_Quest_Click_Entry": {
+        "recognition": "OCR",
+        "expected": "每日任务",
+        "roi": [
+            580,
+            580,
+            134,
+            125
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            635,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Daily_Quest_Entry"
+    },
+    "Action_Daily_Quest_Entry_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Daily_Quest_Entry"
+    },
+    "Loop_Daily_Quest_Claim": {
+        "next": [
+            "Check_Daily_Quest_Claimed",
+            "Action_Daily_Quest_Click_Claim",
+            "Action_Daily_Quest_Claim_Keepalive"
+        ]
+    },
+    "Check_Daily_Quest_Claimed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            533,
+            419,
+            13,
+            3
+        ],
+        "lower": [
+            251,
+            223,
+            165
+        ],
+        "upper": [
+            255,
+            230,
+            176
+        ],
+        "count": 1,
+        "action": "DoNothing",
+        "next": "Loop_Daily_Quest_Reward"
+    },
+    "Action_Daily_Quest_Click_Claim": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi": [
+            463,
+            504,
+            175,
+            131
+        ],
+        "action": "Click",
+        "target": [
+            543,
+            562,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Daily_Quest_Claim"
+    },
+    "Action_Daily_Quest_Claim_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Daily_Quest_Claim"
+    },
+    "Loop_Daily_Quest_Reward": {
+        "next": [
+            "Check_Daily_Quest_Reward",
+            "Action_Daily_Quest_Click_Reward",
+            "Action_Daily_Quest_Reward_MaxHit_Fallback"
+        ]
+    },
+    "Check_Daily_Quest_Reward": {
+        "recognition": "OCR",
+        "expected": "恭喜获得",
+        "roi": [
+            193,
+            192,
+            323,
+            176
+        ],
+        "action": "DoNothing",
+        "next": "Action_Daily_Quest_Close_Reward"
+    },
+    "Action_Daily_Quest_Click_Reward": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            588,
+            414,
+            10,
+            10
+        ],
+        "max_hit": 10,
+        "post_delay": 500,
+        "next": "Loop_Daily_Quest_Reward"
+    },
+    "Action_Daily_Quest_Reward_MaxHit_Fallback": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_Daily_Quest_Back_Page"
+    },
+    "Action_Daily_Quest_Close_Reward": {
+        "recognition": "OCR",
+        "expected": "恭喜获得",
+        "roi": [
+            193,
+            192,
+            323,
+            176
+        ],
+        "action": "Click",
+        "target": [
+            321,
+            942,
+            83,
+            34
+        ],
+        "post_delay": 800,
+        "next": "Loop_Daily_Quest_Back_Page"
+    },
+    "Loop_Daily_Quest_Back_Page": {
+        "next": [
+            "Check_Daily_Quest_Back_Page",
+            "Action_Daily_Quest_Back_Page_Keepalive"
+        ]
+    },
+    "Check_Daily_Quest_Back_Page": {
+        "recognition": "OCR",
+        "expected": "每日任务",
+        "roi": [
+            294,
+            85,
+            376,
+            202
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Daily_Quest_Back_Tower"
+    },
+    "Action_Daily_Quest_Back_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Daily_Quest_Back_Page"
+    },
+    "Loop_Daily_Quest_Back_Tower": {
+        "next": [
+            "Check_Daily_Quest_Back_Tower",
+            "Action_Daily_Quest_Click_Left_Arrow"
+        ]
+    },
+    "Check_Daily_Quest_Back_Tower": {
+        "recognition": "OCR",
+        "expected": "古|代|塔",
+        "roi": [
+            631,
+            735,
+            82,
+            35
+        ],
+        "action": "DoNothing",
+        "next": "Step_End_AFK"
+    },
+    "Action_Daily_Quest_Click_Left_Arrow": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            58,
+            1221,
+            39,
+            34
+        ],
+        "post_delay": 800,
+        "next": "Loop_Daily_Quest_Back_Tower"
+    },
+    "Step_End_AFK": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Step_End_AFK_Current_OpenList"
+    },
+    "Step_End_AFK_Current_OpenList": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_End_AFK_Current_OpenList"
+    },
+    "Loop_End_AFK_Current_OpenList": {
+        "next": [
+            "Check_End_AFK_Current_Battle_List",
+            "Action_End_AFK_Current_Click_Battle_List",
+            "Action_End_AFK_Current_OpenList_Keepalive"
+        ]
+    },
+    "Check_End_AFK_Current_Battle_List": {
+        "recognition": "OCR",
+        "expected": "战斗列表",
+        "roi": [
+            0,
+            0,
+            272,
+            165
+        ],
+        "action": "DoNothing",
+        "next": "Loop_End_AFK_Color_Check"
+    },
+    "Action_End_AFK_Current_Click_Battle_List": {
+        "recognition": "OCR",
+        "expected": "战斗列表",
+        "roi": [
+            565,
+            1053,
+            155,
+            120
+        ],
+        "action": "Click",
+        "target": [
+            635,
+            1105,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_End_AFK_Current_OpenList"
+    },
+    "Action_End_AFK_Current_OpenList_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_End_AFK_Current_OpenList"
+    },
+    "Step_End_AFK_Gold_OpenList": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": "Loop_End_AFK_Gold_OpenList"
+    },
+    "Loop_End_AFK_Gold_OpenList": {
+        "next": [
+            "Check_End_AFK_Gold_Battle_List",
+            "Action_End_AFK_Gold_Click_Battle_List",
+            "Action_End_AFK_Gold_OpenList_Keepalive"
+        ]
+    },
+    "Check_End_AFK_Gold_Battle_List": {
+        "recognition": "OCR",
+        "expected": "战斗列表",
+        "roi": [
+            0,
+            0,
+            272,
+            165
+        ],
+        "action": "DoNothing",
+        "next": "Action_End_AFK_Gold_Open_Filter"
+    },
+    "Action_End_AFK_Gold_Click_Battle_List": {
+        "recognition": "OCR",
+        "expected": "战斗列表",
+        "roi": [
+            565,
+            1053,
+            155,
+            120
+        ],
+        "action": "Click",
+        "target": [
+            635,
+            1105,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_End_AFK_Gold_OpenList"
+    },
+    "Action_End_AFK_Gold_OpenList_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_End_AFK_Gold_OpenList"
+    },
+    "Action_End_AFK_Gold_Open_Filter": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            46,
+            394,
+            30,
+            25
+        ],
+        "post_delay": 800,
+        "next": "Loop_End_AFK_Gold_Filter_Page"
+    },
+    "Loop_End_AFK_Gold_Filter_Page": {
+        "next": [
+            "Check_End_AFK_Gold_Filter_Page",
+            "Action_End_AFK_Gold_Filter_Page_Keepalive"
+        ]
+    },
+    "Check_End_AFK_Gold_Filter_Page": {
+        "recognition": "OCR",
+        "expected": "支援筛选设定",
+        "roi": [
+            208,
+            97,
+            311,
+            153
+        ],
+        "action": "DoNothing",
+        "next": "Action_End_AFK_Gold_Click_Reset"
+    },
+    "Action_End_AFK_Gold_Filter_Page_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_End_AFK_Gold_Filter_Page"
+    },
+    "Action_End_AFK_Gold_Click_Reset": {
+        "recognition": "OCR",
+        "expected": "重置",
+        "roi": [
+            17,
+            983,
+            175,
+            133
+        ],
+        "action": "Click",
+        "target": [
+            97,
+            1042,
+            15,
+            15
+        ],
+        "post_delay": 500,
+        "next": "Action_End_AFK_Gold_Click_Target_1"
+    },
+    "Action_End_AFK_Gold_Click_Target_1": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            321,
+            634,
+            73,
+            51
+        ],
+        "post_delay": 500,
+        "next": "Action_End_AFK_Gold_Swipe_Down"
+    },
+    "Action_End_AFK_Gold_Swipe_Down": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            145,
+            678,
+            1,
+            1
+        ],
+        "end": [
+            151,
+            356,
+            1,
+            1
+        ],
+        "duration": 500,
+        "post_delay": 500,
+        "next": "Action_End_AFK_Gold_Click_Target_2"
+    },
+    "Action_End_AFK_Gold_Click_Target_2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            331,
+            839,
+            46,
+            35
+        ],
+        "post_delay": 500,
+        "next": "Action_End_AFK_Gold_Click_Confirm"
+    },
+    "Action_End_AFK_Gold_Click_Confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            272,
+            946,
+            169,
+            139
+        ],
+        "action": "Click",
+        "target": [
+            349,
+            1008,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_End_AFK_Gold_Back_Battle_List"
+    },
+    "Loop_End_AFK_Gold_Back_Battle_List": {
+        "next": [
+            "Check_End_AFK_Gold_Back_Battle_List",
+            "Action_End_AFK_Gold_Back_Battle_List_Keepalive"
+        ]
+    },
+    "Check_End_AFK_Gold_Back_Battle_List": {
+        "recognition": "OCR",
+        "expected": "战斗列表",
+        "roi": [
+            0,
+            0,
+            272,
+            165
+        ],
+        "action": "DoNothing",
+        "next": "Loop_End_AFK_Color_Check"
+    },
+    "Action_End_AFK_Gold_Back_Battle_List_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_End_AFK_Gold_Back_Battle_List"
+    },
+    "Loop_End_AFK_Color_Check": {
+        "next": [
+            "Check_End_AFK_Color_Gray",
+            "Check_End_AFK_Color_Blue",
+            "Action_End_AFK_Color_Check_Keepalive"
+        ]
+    },
+    "Check_End_AFK_Color_Gray": {
+        "recognition": "ColorMatch",
+        "roi": [
+            132,
+            400,
+            12,
+            11
+        ],
+        "lower": [
+            30,
+            29,
+            27
+        ],
+        "upper": [
+            30,
+            30,
+            27
+        ],
+        "count": 1,
+        "action": "Click",
+        "target": [
+            130,
+            398,
+            15,
+            15
+        ],
+        "max_hit": 1,
+        "post_delay": 500,
+        "next": "Loop_End_AFK_Color_Check"
+    },
+    "Check_End_AFK_Color_Blue": {
+        "recognition": "ColorMatch",
+        "roi": [
+            132,
+            400,
+            12,
+            11
+        ],
+        "lower": [
+            57,
+            123,
+            159
+        ],
+        "upper": [
+            74,
+            173,
+            203
+        ],
+        "count": 1,
+        "action": "Click",
+        "target": [
+            366,
+            425,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Action_End_AFK_Stop"
+    },
+    "Action_End_AFK_Color_Check_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_End_AFK_Color_Check"
+    },
+    "Action_End_AFK_Stop": {
+        "recognition": "DirectHit",
+        "action": "StopTask"
+    },
     "Loop_Global_Monitor": {
         "next": [
-            "Check_State_Daily_Stop",
-            "Check_State_Temp_Leave_Full",
-            "Check_State_Low_Stamina",
             "Check_State_Refill",
             "Check_State_Friend_Request",
             "Check_State_Defeat_Revive",
             "Check_State_Defeat_Support",
             "Check_State_Defeat_Result",
             "Check_State_Settlement",
-            "Check_State_Match_List",
-            "Check_State_Lobby",
+            "Check_State_Mech_Challenge",
+            "Check_State_Mech_Start",
+            "Check_State_Mech_Explore",
             "Check_State_Battle",
             "Check_State_Support",
             "Check_State_Room",
+            "Check_State_Lobby",
             "Action_Wait_Retry"
         ]
     },
-    "Check_State_Daily_Stop": {
-        "recognition": "OCR",
-        "expected": "停止",
-        "roi": [
-            300,
-            1170,
-            125,
-            80
-        ],
-        "action": "DoNothing",
-        "next": "Module_Daily_Stop"
+    "Loop_Ancient_Battlefield": {
+        "next": [
+            "Check_State_Refill",
+            "Check_State_Friend_Request",
+            "Check_State_Defeat_Revive",
+            "Check_State_Defeat_Support",
+            "Check_State_Defeat_Result",
+            "Check_State_Settlement",
+            "Check_State_Battle",
+            "Check_State_Support",
+            "Check_State_Room",
+            "Check_State_Lobby",
+            "Action_Wait_Retry"
+        ]
     },
-    "Check_State_Temp_Leave_Full": {
-        "recognition": "OCR",
-        "expected": "暂离已满",
-        "roi": [
-            283,
-            380,
-            156,
-            49
-        ],
-        "action": "DoNothing",
-        "next": "Module_Temp_Leave_Full"
+    "Loop_Material_Dungeon": {
+        "next": [
+            "Check_State_Refill",
+            "Check_State_Friend_Request",
+            "Check_State_Defeat_Revive",
+            "Check_State_Defeat_Support",
+            "Check_State_Defeat_Result",
+            "Check_State_Settlement",
+            "Check_State_Battle",
+            "Check_State_Support",
+            "Check_State_Lobby",
+            "Action_Wait_Retry"
+        ]
     },
-    "Check_State_Low_Stamina": {
-        "recognition": "OCR",
-        "expected": "^\\d{1,2}/20",
-        "roi": [
-            567,
-            15,
-            78,
-            50
-        ],
-        "action": "Click",
-        "target": [
-            673,
-            37,
-            7,
-            5
-        ],
-        "next": "Module_Refill"
+    "Loop_Daily_Routine": {
+        "next": [
+            "Check_State_Refill",
+            "Check_State_Friend_Request",
+            "Check_State_Defeat_Revive",
+            "Check_State_Defeat_Support",
+            "Check_State_Defeat_Result",
+            "Check_State_Settlement",
+            "Check_State_Battle",
+            "Check_State_Support",
+            "Check_State_Room",
+            "Check_State_Lobby",
+            "Action_Wait_Retry"
+        ]
     },
     "Check_State_Refill": {
         "recognition": "OCR",
@@ -144,29 +3418,38 @@
         "action": "DoNothing",
         "next": "Module_Settlement"
     },
-    "Check_State_Match_List": {
+    "Check_State_Mech_Explore": {
         "recognition": "OCR",
-        "expected": "impossible",
+        "expected": "探索",
         "roi": [
-            0,
-            0,
-            1,
-            1
+            370,
+            1067,
+            87,
+            43
         ],
-        "action": "DoNothing",
-        "next": "Module_Match_List"
+        "next": "Module_Mech_Explore"
     },
-    "Check_State_Lobby": {
+    "Check_State_Mech_Challenge": {
         "recognition": "OCR",
         "expected": "挑战",
         "roi": [
-            560,
-            785,
-            70,
-            45
+            312,
+            1069,
+            99,
+            38
         ],
-        "action": "DoNothing",
-        "next": "Action_Lobby_Click_Entry"
+        "next": "Action_Mech_Click_Challenge"
+    },
+    "Check_State_Mech_Start": {
+        "recognition": "OCR",
+        "expected": "开始",
+        "roi": [
+            295,
+            1107,
+            120,
+            37
+        ],
+        "next": "Action_Mech_Click_Start"
     },
     "Check_State_Battle": {
         "recognition": "OCR",
@@ -202,7 +3485,25 @@
             30
         ],
         "action": "Click",
+        "target": [
+            502,
+            1047,
+            15,
+            15
+        ],
         "next": "Loop_Global_Monitor"
+    },
+    "Check_State_Lobby": {
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            560,
+            785,
+            70,
+            45
+        ],
+        "action": "DoNothing",
+        "next": "Action_Lobby_Click_Entry"
     },
     "Action_Wait_Retry": {
         "recognition": "DirectHit",
