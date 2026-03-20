@@ -173,6 +173,13 @@
                     "next": "Loop_Material_Dungeon"
                 }
             }
+        },
+        {
+            "name": "小工具",
+            "entry": "Task_Utility_Start",
+            "option": [
+                "跳过回合"
+            ]
         }
     ],
     "option": {
@@ -1439,6 +1446,24 @@
                         },
                         "Action_Case_Not_Found": {
                             "expected": "欲望泉"
+                        }
+                    }
+                }
+            ]
+        },
+        "跳过回合": {
+            "name": "1. 跳过回合",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "Task_Utility_Start": {
+                            "action": "StopTask"
                         }
                     }
                 }

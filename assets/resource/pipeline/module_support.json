@@ -13,9 +13,29 @@
         ],
         "post_delay": 1500,
         "next": [
+            "Check_Module_Support_Friend_Request",
             "Action_Case_Found_Target",
             "Action_Case_Not_Found"
         ]
+    },
+    "Check_Module_Support_Friend_Request": {
+        "recognition": "OCR",
+        "expected": "申请",
+        "roi": [
+            280,
+            352,
+            160,
+            68
+        ],
+        "action": "Click",
+        "target": [
+            137,
+            848,
+            126,
+            47
+        ],
+        "post_delay": 1000,
+        "next": "Module_Support"
     },
     "Action_Case_Found_Target": {
         "recognition": "OCR",
