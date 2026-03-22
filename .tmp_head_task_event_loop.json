@@ -1,4 +1,4 @@
-{
+﻿{
     "Task_Bootstrap": {
         "recognition": "DirectHit",
         "action": "DoNothing",
@@ -23,7 +23,7 @@
     },
     "Action_Utility_Click_Skip_Turn": {
         "recognition": "OCR",
-        "expected": "跳过回合",
+        "expected": "璺宠繃鍥炲悎",
         "roi": [
             300,
             1080,
@@ -41,7 +41,7 @@
     },
     "Check_Utility_State_Battle": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             648,
             721,
@@ -53,7 +53,7 @@
     },
     "Check_Utility_State_Battle_Missing": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             648,
             721,
@@ -105,7 +105,7 @@
     },
     "Step_Tower_Normal": {
         "recognition": "OCR",
-        "expected": "挂机收益",
+        "expected": "鎸傛満鏀剁泭",
         "roi": [
             216,
             186,
@@ -136,7 +136,7 @@
     },
     "Step_Tower_Fast": {
         "recognition": "OCR",
-        "expected": "挂机收益",
+        "expected": "鎸傛満鏀剁泭",
         "roi": [
             216,
             186,
@@ -148,7 +148,7 @@
     },
     "Action_Tower_Click_Ancient": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -167,7 +167,7 @@
     },
     "Action_Tower_Open_AFK_Page": {
         "recognition": "OCR",
-        "expected": "古代宝库之塔",
+        "expected": "鍙や唬瀹濆簱涔嬪",
         "roi": [
             187,
             53,
@@ -186,7 +186,7 @@
     },
     "Action_Tower_Normal_Harvest": {
         "recognition": "OCR",
-        "expected": "收获",
+        "expected": "鏀惰幏",
         "roi": [
             475,
             1058,
@@ -224,7 +224,7 @@
     },
     "Check_Tower_Normal_Reward": {
         "recognition": "OCR",
-        "expected": "恭喜获得",
+        "expected": "鎭枩鑾峰緱",
         "roi": [
             245,
             249,
@@ -243,7 +243,7 @@
     },
     "Check_Tower_Normal_Back": {
         "recognition": "OCR",
-        "expected": "挂机收益",
+        "expected": "鎸傛満鏀剁泭",
         "roi": [
             216,
             186,
@@ -255,98 +255,45 @@
     },
     "Loop_Tower_Fast_Decide": {
         "next": [
-            "Check_Tower_Fast_Reward",
-            "Action_Tower_Fast_Click_Direct"
+            "Check_Tower_Fast_Count_0",
+            "Check_Tower_Fast_Count_1",
+            "Step_Tower_Finish"
         ]
     },
-    "Action_Tower_Fast_Click_Direct": {
+    "Check_Tower_Fast_Count_0": {
         "recognition": "OCR",
-        "expected": "快速获得|快速收获",
+        "expected": "0",
         "roi": [
-            145,
-            1062,
-            142,
-            30
+            269,
+            1018,
+            27,
+            31
+        ],
+        "action": "DoNothing",
+        "next": "Step_Tower_Finish"
+    },
+    "Check_Tower_Fast_Count_1": {
+        "recognition": "OCR",
+        "expected": "1",
+        "roi": [
+            269,
+            1018,
+            27,
+            31
         ],
         "action": "Click",
+        "target": [
+            131,
+            1059,
+            144,
+            36
+        ],
         "post_delay": 800,
-        "next": "Loop_Tower_Fast_After_Click"
-    },
-    "Loop_Tower_Fast_After_Click": {
-        "next": [
-            "Check_Tower_Fast_Reward",
-            "Check_Tower_Fast_Back",
-            "Action_Tower_Fast_Confirm",
-            "Action_Tower_Fast_Confirm_MaxHit_Fallback",
-            "Action_Tower_Fast_After_Click_Keepalive"
-        ]
-    },
-    "Action_Tower_Fast_Confirm_MaxHit_Fallback": {
-        "recognition": "OCR",
-        "expected": "取消",
-        "roi": [
-            123,
-            758,
-            157,
-            128
-        ],
-        "action": "Click",
-        "post_delay": 800,
-        "next": "Action_Tower_Fast_NoCount_Back_To_Tower"
-    },
-    "Action_Tower_Fast_NoCount_Back_To_Tower": {
-        "recognition": "OCR",
-        "expected": "挂机收益",
-        "roi": [
-            216,
-            186,
-            296,
-            75
-        ],
-        "action": "Click",
-        "target": [
-            331,
-            1182,
-            15,
-            15
-        ],
-        "post_delay": 1000,
-        "next": "Action_Tower_Fast_NoCount_Back_To_Lobby"
-    },
-    "Action_Tower_Fast_NoCount_Back_To_Lobby": {
-        "recognition": "OCR",
-        "expected": "古代宝库之塔",
-        "roi": [
-            187,
-            53,
-            196,
-            53
-        ],
-        "action": "Click",
-        "target": [
-            66,
-            1213,
-            15,
-            15
-        ],
-        "post_delay": 1000,
-        "next": "Step_Knight_Entry"
-    },
-    "Action_Tower_Fast_After_Click_Keepalive": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            1,
-            1,
-            3,
-            3
-        ],
-        "post_delay": 300,
-        "next": "Loop_Tower_Fast_Decide"
+        "next": "Action_Tower_Fast_Confirm"
     },
     "Action_Tower_Fast_Confirm": {
         "recognition": "OCR",
-        "expected": "快速收获",
+        "expected": "蹇€熸敹鑾?,
         "roi": [
             461,
             805,
@@ -354,9 +301,14 @@
             39
         ],
         "action": "Click",
-        "max_hit": 10,
+        "target": [
+            512,
+            817,
+            15,
+            15
+        ],
         "post_delay": 800,
-        "next": "Loop_Tower_Fast_After_Click"
+        "next": "Loop_Tower_Fast_Result"
     },
     "Loop_Tower_Fast_Result": {
         "next": [
@@ -379,7 +331,7 @@
     },
     "Check_Tower_Fast_Reward": {
         "recognition": "OCR",
-        "expected": "恭喜获得",
+        "expected": "鎭枩鑾峰緱",
         "roi": [
             245,
             249,
@@ -398,7 +350,7 @@
     },
     "Check_Tower_Fast_Back": {
         "recognition": "OCR",
-        "expected": "挂机收益",
+        "expected": "鎸傛満鏀剁泭",
         "roi": [
             216,
             186,
@@ -410,7 +362,7 @@
     },
     "Step_Tower_Finish": {
         "recognition": "OCR",
-        "expected": "挂机收益",
+        "expected": "鎸傛満鏀剁泭",
         "roi": [
             216,
             186,
@@ -429,7 +381,7 @@
     },
     "Step_Tower_Back_Main": {
         "recognition": "OCR",
-        "expected": "古代宝库之塔",
+        "expected": "鍙や唬瀹濆簱涔嬪",
         "roi": [
             187,
             53,
@@ -447,7 +399,7 @@
     },
     "Check_Tower_Back_Main_Success": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -483,7 +435,7 @@
     },
     "Check_Knight_Home_Page": {
         "recognition": "OCR",
-        "expected": "骑士团",
+        "expected": "楠戝＋鍥?,
         "roi": [
             80,
             229,
@@ -495,7 +447,7 @@
     },
     "Action_Knight_Click_Entry": {
         "recognition": "OCR",
-        "expected": "骑士团",
+        "expected": "楠戝＋鍥?,
         "roi": [
             498,
             1219,
@@ -562,7 +514,7 @@
     },
     "Check_Knight_Donate_Page": {
         "recognition": "OCR",
-        "expected": "捐献",
+        "expected": "鎹愮尞",
         "roi": [
             567,
             238,
@@ -587,7 +539,7 @@
     },
     "Action_Knight_Donate_Once": {
         "recognition": "OCR",
-        "expected": "捐献",
+        "expected": "鎹愮尞",
         "roi": [
             379,
             901,
@@ -606,7 +558,7 @@
     },
     "Check_Knight_Donate_Done": {
         "recognition": "OCR",
-        "expected": "已贡献10次",
+        "expected": "宸茶础鐚?0娆?,
         "roi": [
             290,
             901,
@@ -659,7 +611,7 @@
     },
     "Check_Knight_Buff_Page": {
         "recognition": "OCR",
-        "expected": "骑|士|团|增|益",
+        "expected": "楠憒澹珅鍥澧瀨鐩?,
         "roi": [
             8,
             0,
@@ -671,19 +623,19 @@
     },
     "Action_Knight_Open_Buff": {
         "recognition": "OCR",
-        "expected": "骑士团",
+        "expected": "澧瀨鐩?,
         "roi": [
-            80,
-            229,
-            79,
-            44
+            19,
+            1029,
+            65,
+            39
         ],
         "action": "Click",
         "target": [
-            37,
-            999,
-            5,
-            5
+            52,
+            1049,
+            1,
+            1
         ],
         "post_delay": 800,
         "next": "Loop_Knight_Buff_Entry"
@@ -710,7 +662,7 @@
     },
     "Action_Knight_Buff_Activate_1": {
         "recognition": "OCR",
-        "expected": "激活",
+        "expected": "婵€娲?,
         "roi": [
             551,
             299,
@@ -729,7 +681,7 @@
     },
     "Action_Knight_Buff_Activate_2": {
         "recognition": "OCR",
-        "expected": "激活",
+        "expected": "婵€娲?,
         "roi": [
             551,
             541,
@@ -748,7 +700,7 @@
     },
     "Action_Knight_Buff_Activate_3": {
         "recognition": "OCR",
-        "expected": "激活",
+        "expected": "婵€娲?,
         "roi": [
             551,
             780,
@@ -767,7 +719,7 @@
     },
     "Action_Knight_Buff_Confirm": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             478,
             826,
@@ -805,7 +757,7 @@
     },
     "Check_Knight_Lobby_Ready": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -817,7 +769,7 @@
     },
     "Action_Knight_Return_Lobby": {
         "recognition": "OCR",
-        "expected": "返回",
+        "expected": "杩斿洖",
         "roi": [
             48,
             1193,
@@ -860,7 +812,7 @@
     },
     "Check_Shop_Menu_Page_Open": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             34,
             322,
@@ -872,7 +824,7 @@
     },
     "Action_Shop_Click_Menu": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             586,
             1179,
@@ -910,7 +862,7 @@
     },
     "Check_Shop_Page": {
         "recognition": "OCR",
-        "expected": "商店",
+        "expected": "鍟嗗簵",
         "roi": [
             43,
             0,
@@ -922,7 +874,7 @@
     },
     "Action_Shop_Click_Shop": {
         "recognition": "OCR",
-        "expected": "商|店",
+        "expected": "鍟唡搴?,
         "roi": [
             553,
             693,
@@ -983,7 +935,7 @@
     },
     "Check_Shop_Stone_Reward": {
         "recognition": "OCR",
-        "expected": "恭喜获得",
+        "expected": "鎭枩鑾峰緱",
         "roi": [
             189,
             193,
@@ -1008,7 +960,7 @@
     },
     "Check_Shop_Stone_Back": {
         "recognition": "OCR",
-        "expected": "商店",
+        "expected": "鍟嗗簵",
         "roi": [
             43,
             0,
@@ -1044,7 +996,7 @@
     },
     "Check_Shop_Guild_Button": {
         "recognition": "OCR",
-        "expected": "公会商店",
+        "expected": "鍏細鍟嗗簵",
         "roi": [
             0,
             693,
@@ -1101,7 +1053,7 @@
     },
     "Check_Shop_Guild_Page": {
         "recognition": "OCR",
-        "expected": "公会商店",
+        "expected": "鍏細鍟嗗簵",
         "roi": [
             316,
             472,
@@ -1131,7 +1083,7 @@
     },
     "Check_Shop_Book_Item": {
         "recognition": "OCR",
-        "expected": "星间通信书",
+        "expected": "鏄熼棿閫氫俊涔?,
         "roi": [
             120,
             523,
@@ -1149,7 +1101,7 @@
     },
     "Check_Shop_Book_Daily": {
         "recognition": "OCR",
-        "expected": "每日",
+        "expected": "姣忔棩",
         "roi": [
             139,
             760,
@@ -1180,7 +1132,7 @@
     },
     "Check_Shop_Book_Confirm_Page": {
         "recognition": "OCR",
-        "expected": "购买确认",
+        "expected": "璐拱纭",
         "roi": [
             252,
             270,
@@ -1217,7 +1169,7 @@
     },
     "Check_Shop_Book_Reward": {
         "recognition": "OCR",
-        "expected": "恭喜获得",
+        "expected": "鎭枩鑾峰緱",
         "roi": [
             196,
             197,
@@ -1273,7 +1225,7 @@
     },
     "Check_Shop_Menu_Page_Back": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             34,
             322,
@@ -1316,7 +1268,7 @@
     },
     "Check_Shop_Back_Lobby_Success": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -1369,7 +1321,7 @@
     },
     "Check_Dungeon_Gold_Page": {
         "recognition": "OCR",
-        "expected": "切换系列",
+        "expected": "鍒囨崲绯诲垪",
         "roi": [
             569,
             223,
@@ -1381,7 +1333,7 @@
     },
     "Action_Dungeon_Gold_Click_Entry": {
         "recognition": "OCR",
-        "expected": "副本",
+        "expected": "鍓湰",
         "roi": [
             235,
             1176,
@@ -1419,7 +1371,7 @@
     },
     "Check_Dungeon_Gold_Boss": {
         "recognition": "OCR",
-        "expected": "艾莉瑞尔",
+        "expected": "鑹捐帀鐟炲皵",
         "roi": [
             235,
             924,
@@ -1493,7 +1445,7 @@
     },
     "Check_Dungeon_Gold_Open_Room_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|之|塔",
+        "expected": "鍙浠涔媩濉?,
         "roi": [
             631,
             735,
@@ -1505,7 +1457,7 @@
     },
     "Check_Dungeon_Gold_Create_Room": {
         "recognition": "OCR",
-        "expected": "创建房间",
+        "expected": "鍒涘缓鎴块棿",
         "roi": [
             440,
             1040,
@@ -1549,7 +1501,7 @@
     },
     "Check_Dungeon_Gold_Support_Page": {
         "recognition": "OCR",
-        "expected": "助战选择",
+        "expected": "鍔╂垬閫夋嫨",
         "roi": [
             285,
             220,
@@ -1592,7 +1544,7 @@
     },
     "Action_Dungeon_Gold_Case_Found_Target": {
         "recognition": "OCR",
-        "expected": "巴哈",
+        "expected": "宸村搱",
         "roi": [
             355,
             450,
@@ -1604,7 +1556,7 @@
     },
     "Action_Dungeon_Gold_Case_Not_Found": {
         "recognition": "OCR",
-        "expected": "巴哈",
+        "expected": "宸村搱",
         "roi": [
             355,
             450,
@@ -1630,7 +1582,7 @@
     },
     "Check_Dungeon_Gold_Confirm_Team": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             272,
             980,
@@ -1667,7 +1619,7 @@
     },
     "Check_Dungeon_Gold_Start_Battle": {
         "recognition": "OCR",
-        "expected": "开始战斗",
+        "expected": "寮€濮嬫垬鏂?,
         "roi": [
             424,
             1147,
@@ -1704,7 +1656,7 @@
     },
     "Check_Dungeon_Gold_Start_Confirm": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             432,
             787,
@@ -1744,7 +1696,7 @@
     },
     "Check_Dungeon_Gold_State_Battle": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             648,
             721,
@@ -1764,7 +1716,7 @@
     },
     "Case_Dungeon_Gold_Skip_Found": {
         "recognition": "OCR",
-        "expected": "跳过",
+        "expected": "璺宠繃",
         "roi": [
             300,
             1080,
@@ -1787,7 +1739,7 @@
     },
     "Check_Dungeon_Gold_Defeat_Revive": {
         "recognition": "OCR",
-        "expected": "复活",
+        "expected": "澶嶆椿",
         "roi": [
             450,
             406,
@@ -1811,7 +1763,7 @@
     },
     "Check_Dungeon_Gold_Defeat_Support_Page": {
         "recognition": "OCR",
-        "expected": "呼叫支援",
+        "expected": "鍛煎彨鏀彺",
         "roi": [
             239,
             168,
@@ -1830,7 +1782,7 @@
     },
     "Check_Dungeon_Gold_Defeat_Result": {
         "recognition": "OCR",
-        "expected": "已战败",
+        "expected": "宸叉垬璐?,
         "roi": [
             287,
             402,
@@ -1867,7 +1819,7 @@
     },
     "Check_Dungeon_Gold_Return_Battle": {
         "recognition": "OCR",
-        "expected": "返回战斗",
+        "expected": "杩斿洖鎴樻枟",
         "roi": [
             419,
             1156,
@@ -1904,7 +1856,7 @@
     },
     "Check_Dungeon_Gold_Exit_Confirm": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             429,
             792,
@@ -1941,7 +1893,7 @@
     },
     "Check_Dungeon_Gold_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -1977,7 +1929,7 @@
     },
     "Check_Dungeon_Gold_Completion_Battle_List_Header": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             0,
             0,
@@ -1989,7 +1941,7 @@
     },
     "Action_Dungeon_Gold_Completion_Click_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             559,
             1041,
@@ -2026,7 +1978,7 @@
     },
     "Check_Dungeon_Gold_Completion_Done": {
         "recognition": "OCR",
-        "expected": "没有|正在|战斗|中的|副本",
+        "expected": "娌℃湁|姝ｅ湪|鎴樻枟|涓殑|鍓湰",
         "roi": [
             126,
             102,
@@ -2056,7 +2008,7 @@
     },
     "Check_Dungeon_Gold_Completion_Done_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|之|塔",
+        "expected": "鍙浠涔媩濉?,
         "roi": [
             631,
             735,
@@ -2098,7 +2050,7 @@
     },
     "Check_Dungeon_Gold_Completion_Not_Done_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|之|塔",
+        "expected": "鍙浠涔媩濉?,
         "roi": [
             631,
             735,
@@ -2128,7 +2080,7 @@
     },
     "Check_Dungeon_Gold_Completion_Pending_Entry": {
         "recognition": "OCR",
-        "expected": "待确认",
+        "expected": "寰呯‘璁?,
         "roi": [
             507,
             1074,
@@ -2176,7 +2128,7 @@
     },
     "Check_Dungeon_Gold_Completion_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -2212,7 +2164,7 @@
     },
     "Check_Dungeon_Black_Page": {
         "recognition": "OCR",
-        "expected": "切换系列",
+        "expected": "鍒囨崲绯诲垪",
         "roi": [
             569,
             223,
@@ -2224,7 +2176,7 @@
     },
     "Action_Dungeon_Black_Click_Entry": {
         "recognition": "OCR",
-        "expected": "副本",
+        "expected": "鍓湰",
         "roi": [
             235,
             1176,
@@ -2263,7 +2215,7 @@
     },
     "Check_Dungeon_Black_Beast_Ready": {
         "recognition": "OCR",
-        "expected": "苏尔特尔",
+        "expected": "鑻忓皵鐗瑰皵",
         "roi": [
             228,
             376,
@@ -2275,7 +2227,7 @@
     },
     "Check_Dungeon_Black_Beast_Entry": {
         "recognition": "OCR",
-        "expected": "始源巨兽",
+        "expected": "濮嬫簮宸ㄥ吔",
         "roi": [
             303,
             426,
@@ -2325,7 +2277,7 @@
     },
     "Check_Dungeon_Black_Boss": {
         "recognition": "OCR",
-        "expected": "诺维克的幻影",
+        "expected": "璇虹淮鍏嬬殑骞诲奖",
         "roi": [
             228,
             924,
@@ -2376,7 +2328,7 @@
     },
     "Check_Dungeon_Black_Open_Room_Need_Click": {
         "recognition": "OCR",
-        "expected": "始源巨兽",
+        "expected": "濮嬫簮宸ㄥ吔",
         "roi": [
             303,
             426,
@@ -2395,7 +2347,7 @@
     },
     "Check_Dungeon_Black_Open_Room_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|之|塔",
+        "expected": "鍙浠涔媩濉?,
         "roi": [
             631,
             735,
@@ -2407,7 +2359,7 @@
     },
     "Check_Dungeon_Black_Create_Room_Page": {
         "recognition": "OCR",
-        "expected": "创建房间",
+        "expected": "鍒涘缓鎴块棿",
         "roi": [
             398,
             989,
@@ -2542,7 +2494,7 @@
     },
     "Check_Dungeon_Black_Create_Room": {
         "recognition": "OCR",
-        "expected": "创建房间",
+        "expected": "鍒涘缓鎴块棿",
         "roi": [
             440,
             1040,
@@ -2581,7 +2533,7 @@
     },
     "Check_Dungeon_Black_Support_Page": {
         "recognition": "OCR",
-        "expected": "助战选择",
+        "expected": "鍔╂垬閫夋嫨",
         "roi": [
             285,
             220,
@@ -2624,7 +2576,7 @@
     },
     "Action_Dungeon_Black_Case_Found_Target": {
         "recognition": "OCR",
-        "expected": "巴哈",
+        "expected": "宸村搱",
         "roi": [
             355,
             450,
@@ -2636,7 +2588,7 @@
     },
     "Action_Dungeon_Black_Case_Not_Found": {
         "recognition": "OCR",
-        "expected": "巴哈",
+        "expected": "宸村搱",
         "roi": [
             355,
             450,
@@ -2662,7 +2614,7 @@
     },
     "Check_Dungeon_Black_Confirm_Team": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             272,
             980,
@@ -2699,7 +2651,7 @@
     },
     "Check_Dungeon_Black_Start_Battle": {
         "recognition": "OCR",
-        "expected": "开始战斗",
+        "expected": "寮€濮嬫垬鏂?,
         "roi": [
             424,
             1147,
@@ -2736,7 +2688,7 @@
     },
     "Check_Dungeon_Black_Start_Confirm": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             432,
             787,
@@ -2751,7 +2703,7 @@
             15
         ],
         "post_delay": 3000,
-        "next": "Loop_Dungeon_Black_Combat"
+        "next": "Loop_Dungeon_Black_Support_Once"
     },
     "Action_Dungeon_Black_Start_Confirm_Keepalive": {
         "recognition": "DirectHit",
@@ -2767,16 +2719,18 @@
     },
     "Loop_Dungeon_Black_Combat": {
         "next": [
+            "Check_Dungeon_Black_Back_Lobby",
             "Check_Dungeon_Black_State_Battle",
             "Check_Dungeon_Black_Defeat_Revive",
             "Check_Dungeon_Black_Defeat_Support_Page",
             "Check_Dungeon_Black_Defeat_Result",
+            "Check_Dungeon_Black_Settlement",
             "Action_Dungeon_Black_Combat_Keepalive"
         ]
     },
     "Check_Dungeon_Black_State_Battle": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             648,
             721,
@@ -2796,7 +2750,7 @@
     },
     "Case_Dungeon_Black_Skip_Found": {
         "recognition": "OCR",
-        "expected": "跳过",
+        "expected": "璺宠繃",
         "roi": [
             300,
             1080,
@@ -2817,9 +2771,217 @@
         "action": "DoNothing",
         "next": "Loop_Dungeon_Black_Combat"
     },
+    "Loop_Dungeon_Black_Support_Once": {
+        "next": [
+            "Check_Dungeon_Black_Support_Page_In_Battle",
+            "Action_Dungeon_Black_Request_Support",
+            "Action_Dungeon_Black_Support_Skip_After_Once"
+        ]
+    },
+    "Check_Dungeon_Black_Support_Page_Left": {
+        "recognition": "OCR",
+        "expected": "鍛煎彨鏀彺",
+        "roi": [
+            239,
+            168,
+            245,
+            153
+        ],
+        "inverse": true,
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Combat"
+    },
+    "Check_Dungeon_Black_Support_Page_In_Battle": {
+        "recognition": "OCR",
+        "expected": "鍛煎彨鏀彺",
+        "roi": [
+            239,
+            168,
+            245,
+            153
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Support_Once"
+    },
+    "Loop_Dungeon_Black_Support_Send_Entry": {
+        "next": [
+            "Check_Dungeon_Black_Send_Button",
+            "Action_Dungeon_Black_Support_Send_Entry_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Send_Button": {
+        "recognition": "OCR",
+        "expected": "鍙戦€?,
+        "roi": [
+            279,
+            893,
+            161,
+            135
+        ],
+        "action": "DoNothing",
+        "next": "Loop_Dungeon_Black_Support_Send_Color"
+    },
+    "Action_Dungeon_Black_Support_Send_Entry_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Support_Send_Entry"
+    },
+    "Loop_Dungeon_Black_Support_Send_Color": {
+        "next": [
+            "Check_Dungeon_Black_Send_Color_Gray",
+            "Check_Dungeon_Black_Send_Color_Ready",
+            "Action_Dungeon_Black_Support_Send_Color_Keepalive"
+        ]
+    },
+    "Check_Dungeon_Black_Send_Color_Gray": {
+        "recognition": "ColorMatch",
+        "roi": [
+            415,
+            953,
+            8,
+            8
+        ],
+        "lower": [
+            109,
+            109,
+            109
+        ],
+        "upper": [
+            120,
+            120,
+            120
+        ],
+        "count": 1,
+        "action": "Click",
+        "target": [
+            68,
+            1219,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Back_To_Battle_From_Support"
+    },
+    "Check_Dungeon_Black_Send_Color_Ready": {
+        "recognition": "ColorMatch",
+        "roi": [
+            415,
+            953,
+            8,
+            8
+        ],
+        "lower": [
+            57,
+            122,
+            126
+        ],
+        "upper": [
+            71,
+            135,
+            139
+        ],
+        "count": 1,
+        "action": "Click",
+        "target": [
+            352,
+            953,
+            15,
+            15
+        ],
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Black_Support_Send_Entry"
+    },
+    "Action_Dungeon_Black_Support_Send_Color_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Support_Send_Color"
+    },
+    "Loop_Dungeon_Black_Back_To_Battle_From_Support": {
+        "next": [
+            "Check_Dungeon_Black_State_Battle",
+            "Action_Dungeon_Black_Back_To_Battle_From_Support_Keepalive"
+        ]
+    },
+    "Action_Dungeon_Black_Back_To_Battle_From_Support_Keepalive": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            68,
+            1219,
+            15,
+            15
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Back_To_Battle_From_Support"
+    },
+    "Action_Dungeon_Black_Send_Support": {
+        "recognition": "OCR",
+        "expected": "鍙戦€?,
+        "roi": [
+            279,
+            893,
+            161,
+            135
+        ],
+        "action": "Click",
+        "target": [
+            352,
+            953,
+            15,
+            15
+        ],
+        "max_hit": 1,
+        "post_delay": 1000,
+        "next": "Loop_Dungeon_Black_Support_Send_Entry"
+    },
+    "Action_Dungeon_Black_Request_Support": {
+        "recognition": "OCR",
+        "expected": "鍙戦€佸浜烘敮鎻磋姹?,
+        "roi": [
+            4,
+            1199,
+            276,
+            81
+        ],
+        "action": "Click",
+        "target": [
+            84,
+            1270,
+            15,
+            5
+        ],
+        "post_delay": 800,
+        "next": "Loop_Dungeon_Black_Support_Once"
+    },
+    "Action_Dungeon_Black_Support_Skip_After_Once": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1,
+            1,
+            3,
+            3
+        ],
+        "post_delay": 300,
+        "next": "Loop_Dungeon_Black_Support_Once"
+    },
     "Check_Dungeon_Black_Defeat_Revive": {
         "recognition": "OCR",
-        "expected": "复活",
+        "expected": "澶嶆椿",
         "roi": [
             450,
             406,
@@ -2831,7 +2993,7 @@
     },
     "Check_Dungeon_Black_Defeat_Support_Page": {
         "recognition": "OCR",
-        "expected": "呼叫支援",
+        "expected": "鍛煎彨鏀彺",
         "roi": [
             239,
             168,
@@ -2851,7 +3013,7 @@
     },
     "Check_Dungeon_Black_Defeat_Support_Page_Left": {
         "recognition": "OCR",
-        "expected": "呼叫支援",
+        "expected": "鍛煎彨鏀彺",
         "roi": [
             239,
             168,
@@ -2864,7 +3026,7 @@
     },
     "Action_Dungeon_Black_Defeat_Request_Support": {
         "recognition": "OCR",
-        "expected": "发送多人支援请求",
+        "expected": "鍙戦€佸浜烘敮鎻磋姹?,
         "roi": [
             4,
             1199,
@@ -2883,7 +3045,7 @@
     },
     "Action_Dungeon_Black_Defeat_Send_Support": {
         "recognition": "OCR",
-        "expected": "发送",
+        "expected": "鍙戦€?,
         "roi": [
             279,
             893,
@@ -2915,7 +3077,7 @@
     },
     "Check_Dungeon_Black_Defeat_Result": {
         "recognition": "OCR",
-        "expected": "已战败",
+        "expected": "宸叉垬璐?,
         "roi": [
             287,
             402,
@@ -2934,7 +3096,7 @@
     },
     "Check_Dungeon_Black_Settlement": {
         "recognition": "OCR",
-        "expected": "数据",
+        "expected": "鏁版嵁",
         "roi": [
             591,
             511,
@@ -2983,7 +3145,7 @@
     },
     "Check_Dungeon_Black_Return_Battle": {
         "recognition": "OCR",
-        "expected": "返回战斗",
+        "expected": "杩斿洖鎴樻枟",
         "roi": [
             419,
             1156,
@@ -3020,7 +3182,7 @@
     },
     "Check_Dungeon_Black_Exit_Confirm": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             429,
             792,
@@ -3057,7 +3219,7 @@
     },
     "Check_Dungeon_Black_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -3093,7 +3255,7 @@
     },
     "Check_Dungeon_Black_Completion_Battle_List_Header": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             0,
             0,
@@ -3105,7 +3267,7 @@
     },
     "Action_Dungeon_Black_Completion_Click_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             559,
             1041,
@@ -3142,7 +3304,7 @@
     },
     "Check_Dungeon_Black_Completion_Done": {
         "recognition": "OCR",
-        "expected": "没有|正在|战斗|中的|副本",
+        "expected": "娌℃湁|姝ｅ湪|鎴樻枟|涓殑|鍓湰",
         "roi": [
             126,
             102,
@@ -3172,7 +3334,7 @@
     },
     "Check_Dungeon_Black_Completion_Done_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|之|塔",
+        "expected": "鍙浠涔媩濉?,
         "roi": [
             631,
             735,
@@ -3214,7 +3376,7 @@
     },
     "Check_Dungeon_Black_Completion_Not_Done_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|之|塔",
+        "expected": "鍙浠涔媩濉?,
         "roi": [
             631,
             735,
@@ -3244,7 +3406,7 @@
     },
     "Check_Dungeon_Black_Completion_Pending_Entry": {
         "recognition": "OCR",
-        "expected": "待确认",
+        "expected": "寰呯‘璁?,
         "roi": [
             507,
             1074,
@@ -3292,7 +3454,7 @@
     },
     "Check_Dungeon_Black_Completion_Back_Lobby": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -3328,7 +3490,7 @@
     },
     "Check_Daily_Quest_Page": {
         "recognition": "OCR",
-        "expected": "每日任务",
+        "expected": "姣忔棩浠诲姟",
         "roi": [
             294,
             85,
@@ -3340,7 +3502,7 @@
     },
     "Action_Daily_Quest_Click_Entry": {
         "recognition": "OCR",
-        "expected": "每日任务",
+        "expected": "姣忔棩浠诲姟",
         "roi": [
             580,
             580,
@@ -3399,7 +3561,7 @@
     },
     "Action_Daily_Quest_Click_Claim": {
         "recognition": "OCR",
-        "expected": "领取",
+        "expected": "棰嗗彇",
         "roi": [
             463,
             504,
@@ -3443,7 +3605,7 @@
     },
     "Check_Daily_Quest_Reward": {
         "recognition": "OCR",
-        "expected": "恭喜获得",
+        "expected": "鎭枩鑾峰緱",
         "roi": [
             193,
             192,
@@ -3473,7 +3635,7 @@
     },
     "Action_Daily_Quest_Close_Reward": {
         "recognition": "OCR",
-        "expected": "恭喜获得",
+        "expected": "鎭枩鑾峰緱",
         "roi": [
             193,
             192,
@@ -3498,7 +3660,7 @@
     },
     "Check_Daily_Quest_Back_Page": {
         "recognition": "OCR",
-        "expected": "每日任务",
+        "expected": "姣忔棩浠诲姟",
         "roi": [
             294,
             85,
@@ -3528,7 +3690,7 @@
     },
     "Check_Daily_Quest_Back_Tower": {
         "recognition": "OCR",
-        "expected": "古|代|塔",
+        "expected": "鍙浠濉?,
         "roi": [
             631,
             735,
@@ -3569,7 +3731,7 @@
     },
     "Check_End_AFK_Current_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             0,
             0,
@@ -3581,7 +3743,7 @@
     },
     "Action_End_AFK_Current_Click_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             565,
             1053,
@@ -3624,7 +3786,7 @@
     },
     "Check_End_AFK_Gold_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             0,
             0,
@@ -3636,7 +3798,7 @@
     },
     "Action_End_AFK_Gold_Click_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             565,
             1053,
@@ -3685,7 +3847,7 @@
     },
     "Check_End_AFK_Gold_Filter_Page": {
         "recognition": "OCR",
-        "expected": "支援筛选设定",
+        "expected": "鏀彺绛涢€夎瀹?,
         "roi": [
             208,
             97,
@@ -3709,7 +3871,7 @@
     },
     "Action_End_AFK_Gold_Click_Reset": {
         "recognition": "OCR",
-        "expected": "重置",
+        "expected": "閲嶇疆",
         "roi": [
             17,
             983,
@@ -3771,7 +3933,7 @@
     },
     "Action_End_AFK_Gold_Click_Confirm": {
         "recognition": "OCR",
-        "expected": "确定",
+        "expected": "纭畾",
         "roi": [
             272,
             946,
@@ -3796,7 +3958,7 @@
     },
     "Check_End_AFK_Gold_Back_Battle_List": {
         "recognition": "OCR",
-        "expected": "战斗列表",
+        "expected": "鎴樻枟鍒楄〃",
         "roi": [
             0,
             0,
@@ -3964,7 +4126,7 @@
     },
     "Check_State_Refill": {
         "recognition": "OCR",
-        "expected": "补充",
+        "expected": "琛ュ厖",
         "roi": [
             280,
             150,
@@ -3976,7 +4138,7 @@
     },
     "Check_State_Friend_Request": {
         "recognition": "OCR",
-        "expected": "申请",
+        "expected": "鐢宠",
         "roi": [
             280,
             352,
@@ -3995,7 +4157,7 @@
     },
     "Check_State_Defeat_Revive": {
         "recognition": "OCR",
-        "expected": "复活",
+        "expected": "澶嶆椿",
         "roi": [
             450,
             406,
@@ -4007,7 +4169,7 @@
     },
     "Check_State_Defeat_Support": {
         "recognition": "OCR",
-        "expected": "呼叫支援",
+        "expected": "鍛煎彨鏀彺",
         "roi": [
             288,
             220,
@@ -4019,7 +4181,7 @@
     },
     "Check_State_Defeat_Result": {
         "recognition": "OCR",
-        "expected": "已战败",
+        "expected": "宸叉垬璐?,
         "roi": [
             287,
             402,
@@ -4031,7 +4193,7 @@
     },
     "Check_State_Settlement": {
         "recognition": "OCR",
-        "expected": "数据",
+        "expected": "鏁版嵁",
         "roi": [
             591,
             511,
@@ -4043,7 +4205,7 @@
     },
     "Check_State_Mech_Explore": {
         "recognition": "OCR",
-        "expected": "探索",
+        "expected": "鎺㈢储",
         "roi": [
             370,
             1067,
@@ -4054,7 +4216,7 @@
     },
     "Check_State_Mech_Challenge": {
         "recognition": "OCR",
-        "expected": "挑战",
+        "expected": "鎸戞垬",
         "roi": [
             312,
             1069,
@@ -4065,7 +4227,7 @@
     },
     "Check_State_Mech_Start": {
         "recognition": "OCR",
-        "expected": "开始",
+        "expected": "寮€濮?,
         "roi": [
             295,
             1107,
@@ -4076,7 +4238,7 @@
     },
     "Check_State_Battle": {
         "recognition": "OCR",
-        "expected": "菜单",
+        "expected": "鑿滃崟",
         "roi": [
             648,
             721,
@@ -4088,7 +4250,7 @@
     },
     "Check_State_Support": {
         "recognition": "OCR",
-        "expected": "助战选择",
+        "expected": "鍔╂垬閫夋嫨",
         "roi": [
             285,
             220,
@@ -4100,7 +4262,7 @@
     },
     "Check_State_Room": {
         "recognition": "OCR",
-        "expected": "创建房间",
+        "expected": "鍒涘缓鎴块棿",
         "roi": [
             440,
             1040,
@@ -4120,7 +4282,7 @@
     },
     "Check_State_Lobby": {
         "recognition": "OCR",
-        "expected": "挑战",
+        "expected": "鎸戞垬",
         "roi": [
             560,
             785,
